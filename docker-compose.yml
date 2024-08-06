@@ -156,6 +156,7 @@ services:
       - "25565:25565"
     environment:
       EULA: "TRUE"
+      TZ: $TZ
       ICON: "/data/FKOW logo.png"
       OVERRIDE_ICON: "TRUE"
       SEED: "flyingkows"
@@ -178,6 +179,7 @@ services:
       # since this service waits for mc to be healthy, no initial delay is needed
       INITIAL_DELAY: 0
       PAUSE_IF_NO_PLAYERS: true
+      TZ: $TZ
     volumes:
       - $DOCKERDIR/appdata/mc/data:/data:ro
       - $DOCKERDIR/appdata/mc/backups:/backups
