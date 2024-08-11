@@ -19,6 +19,7 @@ services:
       RESOURCE_PACK_ENFORCE: "TRUE"
       ONLINE_MODE: "FALSE"
       SPIGET_RESOURCES: 6269, 14153
+      TYPE: SPIGOT
     volumes:
       - $DOCKERDIR/appdata/mc/data:/data
   mc-backup:
