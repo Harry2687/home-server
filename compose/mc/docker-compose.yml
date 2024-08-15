@@ -17,9 +17,8 @@ services:
       RESOURCE_PACK: "https://download.mc-packs.net/pack/1befd1dc9e0d5158bbbe2a4b29f6ebad1fe7af81.zip"
       RESOURCE_PACK_SHA1: "1befd1dc9e0d5158bbbe2a4b29f6ebad1fe7af81"
       RESOURCE_PACK_ENFORCE: "TRUE"
-      ONLINE_MODE: "FALSE"
-      SPIGET_RESOURCES: 14153
-      TYPE: SPIGOT
+      TYPE: "MODRINTH"
+      MODRINTH_PROJECTS: "lithium"
     volumes:
       - $DOCKERDIR/appdata/mc/data:/data
   mc-backup:
