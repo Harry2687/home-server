@@ -32,7 +32,7 @@ services:
     volumes:
       - $DOCKERDIR/appdata/mc-offline/data:/data:ro
       - $DOCKERDIR/appdata/mc-offline/backups:/backups
-  mc-restore-backup:
+  mc-offline-restore-backup:
     # Same image as mc, but any base image with bash and tar will work
     image: itzg/mc-backup
     restart: "no"
