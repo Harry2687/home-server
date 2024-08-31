@@ -5,7 +5,7 @@ RESTIC_PASSWORD="/home/harryzhong/restic_password"
 BACKUP_SOURCE="/home/harryzhong/docker/appdata"
 BACKUP_REPO_REMOTE="rclone:gdrive:Backups/optiplexmediaserver"
 BACKUP_REPO_LOCAL="/media/hd1/backups/appdata"
-KEEP_OPTIONS="--keep-daily 6 --keep-weekly 3 --keep-monthly 1"
+KEEP_OPTIONS="--keep-daily 6 --keep-weekly 3 --keep-monthly 1 --keep-yearly 1"
 
 (
   # Stop Docker containers
