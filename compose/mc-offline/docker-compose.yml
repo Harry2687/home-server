@@ -16,6 +16,10 @@ services:
       RESOURCE_PACK_ENFORCE: "TRUE"
       ONLINE_MODE: "FALSE"
       TYPE: SPIGOT
+      RCON_CMDS_STARTUP:  |-
+        gamerule keepInventory true
+        execute in minecraft:the_nether run gamerule keepInventory true
+        execute in minecraft:the_end run gamerule keepInventory true
     volumes:
       - $DOCKERDIR/appdata/mc-offline/data:/data
   mc-offline-backup:
