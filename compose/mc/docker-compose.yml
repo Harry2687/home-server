@@ -8,7 +8,8 @@ services:
     environment:
       EULA: "TRUE"
       TZ: $TZ
-      ICON: "/data/FKOW logo.png"
+      VERSION: "1.21.1"
+      ICON: "/data/ai_flying_cow.jpeg"
       OVERRIDE_ICON: "TRUE"
       SEED: "flyingkows"
       SERVER_NAME: "Flying Kows"
