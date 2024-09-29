@@ -1,10 +1,33 @@
+networks:
+  minecraft-network:
+    driver: bridge    
+    ipam:
+      config:
+        - subnet: 172.19.0.0/16
+
 services:
-  mc:
-    image: itzg/minecraft-server
-    tty: true
-    stdin_open: true
+  lazymc:
+    image: ghcr.io/joesturge/lazymc-docker-proxy:latest
+    networks:
+      minecraft-network:
+        ipv4_address: 172.19.0.2
+    restart: unless-stopped
+    volumes:
+      - $DOCKERDIR/appdata/mc/data:/server:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - "25565:25565"
+  mc:
+    image: itzg/minecraft-server
+    networks:
+      minecraft-network:
+        ipv4_address: 172.19.0.3
+    tty: true
+    stdin_open: true
+    labels:
+      - lazymc.enabled=true
+      - lazymc.group=mc
+      - lazymc.server.address=mc:25565
     environment:
       EULA: "TRUE"
       TZ: $TZ
@@ -20,6 +43,7 @@ services:
       RESOURCE_PACK_ENFORCE: "TRUE"
       MEMORY: "8G"
       VIEW_DISTANCE: 12
+    restart: no
     volumes:
       - $DOCKERDIR/appdata/mc/data:/data
   mc-backup:
