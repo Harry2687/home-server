@@ -1,6 +1,6 @@
 include:
   - path: "compose/dashboard/docker-compose.yml"
   - path: "compose/mc/docker-compose.yml"
-  - path: "compose/mc-offline/docker-compose.yml"
+  - path: "compose/mc-modded/docker-compose.yml"
   - path: "compose/media/docker-compose.yml"
   - path: "compose/network/docker-compose.yml"
