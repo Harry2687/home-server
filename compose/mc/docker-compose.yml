@@ -48,27 +48,13 @@ services:
       - $DOCKERDIR/appdata/mc/data:/data
   mc-backup:
     image: itzg/mc-backup
-    depends_on:
-      mc:
-        condition: service_healthy
     environment:
       BACKUP_INTERVAL: "2h"
       PRUNE_BACKUP_DAYS: 3
       RCON_HOST: mc
-      # since this service waits for mc to be healthy, no initial delay is needed
-      INITIAL_DELAY: 0
+      INITIAL_DELAY: "2m"
       PAUSE_IF_NO_PLAYERS: true
       TZ: $TZ
     volumes:
       - $DOCKERDIR/appdata/mc/data:/data:ro
       - $DOCKERDIR/appdata/mc/backups:/backups
-  mc-restore-backup:
-    # Same image as mc, but any base image with bash and tar will work
-    image: itzg/mc-backup
-    restart: "no"
-    entrypoint: restore-tar-backup
-    volumes:
-      # Must be same mount as mc service, needs to be writable
-      - $DOCKERDIR/appdata/mc/data:/data
-      # Must be same mount as backups service, but can be read-only
-      - $DOCKERDIR/appdata/mc/backups:/backups:ro
