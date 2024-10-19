@@ -4,3 +4,4 @@ include:
   - path: "compose/mc-modded/docker-compose.yml"
   - path: "compose/media/docker-compose.yml"
   - path: "compose/network/docker-compose.yml"
+  - path: "compose/terraria/docker-compose.yml"
