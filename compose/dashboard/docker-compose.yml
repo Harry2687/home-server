@@ -1,12 +1,9 @@
 services:
-  homarr:
-    container_name: homarr
-    image: ghcr.io/ajnart/homarr:latest
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
-      - $DOCKERDIR/appdata/homarr/configs:/app/data/configs
-      - $DOCKERDIR/appdata/homarr/icons:/app/public/icons
-      - $DOCKERDIR/appdata/homarr/data:/data
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
     ports:
-      - '7575:7575'
+      - 3000:3000
+    volumes:
+      - $DOCKERDIR/appdata/homepage/config:/app/config # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
