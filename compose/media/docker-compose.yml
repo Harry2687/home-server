@@ -14,6 +14,8 @@ services:
       - $MEDIADIR/TV:/tv
       - $MEDIADIR/Movies:/movies
     restart: unless-stopped
+    dns:
+      - 1.1.1.1
   overseerr:
     image: sctx/overseerr:latest
     container_name: overseerr
@@ -25,6 +27,8 @@ services:
       - 5055:5055
     volumes:
       - $DOCKERDIR/appdata/overseerr/config:/app/config
+    dns:
+      - 1.1.1.1
     restart: unless-stopped
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
@@ -72,6 +76,8 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
+    dns:
+      - 1.1.1.1
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -86,6 +92,8 @@ services:
     ports:
       - 8989:8989
     restart: unless-stopped
+    dns:
+      - 1.1.1.1
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
