@@ -48,16 +48,3 @@ services:
     restart: no
     volumes:
       - $DOCKERDIR/appdata/mc/data:/data
-  mc-backup:
-    container_name: mc-backup
-    image: itzg/mc-backup
-    environment:
-      BACKUP_INTERVAL: "2h"
-      PRUNE_BACKUP_DAYS: 3
-      RCON_HOST: mc
-      INITIAL_DELAY: "2m"
-      PAUSE_IF_NO_PLAYERS: true
-      TZ: $TZ
-    volumes:
-      - $DOCKERDIR/appdata/mc/data:/data:ro
-      - $DOCKERDIR/appdata/mc/backups:/backups
