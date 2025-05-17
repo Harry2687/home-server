@@ -16,6 +16,17 @@ services:
     restart: unless-stopped
     dns:
       - 1.1.1.1
+  jellyfin:
+    image: ghcr.io/jellyfin/jellyfin:latest
+    container_name: jellyfin
+    volumes:
+      - $DOCKERDIR/appdata/jellyfin/config:/config
+      - $DOCKERDIR/appdata/jellyfin/cache:/cache
+      - $MEDIADIR/TV:/media/tv
+      - $MEDIADIR/Movies:/media/movies
+    ports:
+      - 8096:8096
+    restart: unless-stopped
   overseerr:
     image: sctx/overseerr:latest
     container_name: overseerr
