@@ -16,3 +16,14 @@ services:
     privileged: true
     restart: unless-stopped
     network_mode: host
+  nginxproxymanager:
+    container_name: nginxproxymanager
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "81:81"
+    volumes:
+      - $DOCKERDIR/appdata/nginxproxymanager/data:/data
+      - $DOCKERDIR/appdata/nginxproxymanager/letsencrypt:/etc/letsencrypt

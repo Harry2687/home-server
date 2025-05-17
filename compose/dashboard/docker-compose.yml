@@ -5,7 +5,7 @@ services:
     ports:
       - 3000:3000
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: "$LOCAL_IP:3000,$TAILCALE_IP:3000"
+      HOMEPAGE_ALLOWED_HOSTS: "$LOCAL_IP:3000,$TAILCALE_IP:3000,homeserver.harryzhong.com"
     volumes:
       - $DOCKERDIR/appdata/homepage/config:/app/config # Make sure your local config directory exists
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
