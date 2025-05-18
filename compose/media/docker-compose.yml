@@ -112,8 +112,7 @@ services:
       - TZ=$TZ
     volumes:
       - $DOCKERDIR/appdata/bazarr/config:/config
-      - $MEDIADIR/Movies:/movies #optional
-      - $MEDIADIR/TV:/tv #optional
+      - $MEDIADIR:/data
     ports:
       - 6767:6767
     restart: unless-stopped
