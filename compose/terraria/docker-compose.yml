@@ -1,16 +1,16 @@
-services:
-  tmodloader:
-    image: jacobsmile/tmodloader1.4:latest
-    container_name: tmodloader
-    ports:
-      - 7777:7777
-    environment:
-      - "TMOD_AUTODOWNLOAD=2824688072,2824688266,3139798632,3258675288,2563309347,2908170107,2619954303,2826246821"
-      - "TMOD_ENABLEDMODS=2824688072,2824688266,3139798632,3258675288,2563309347,2908170107,2619954303,2826246821"
-      - "TMOD_PASS=N/A"
-      - "TMOD_WORLDNAME=Flying Kows"
-      - "TMOD_WORLDSIZE=3"
-      - "TMOD_WORLDSEED=flyingkows"
-    volumes:
-      - $DOCKERDIR/appdata/terraria/data:/data
-    restart: unless-stopped
+# services:
+#   tmodloader:
+#     image: jacobsmile/tmodloader1.4:latest
+#     container_name: tmodloader
+#     ports:
+#       - 7777:7777
+#     environment:
+#       - "TMOD_AUTODOWNLOAD=2824688072,2824688266,3139798632,3258675288,2563309347,2908170107,2619954303,2826246821"
+#       - "TMOD_ENABLEDMODS=2824688072,2824688266,3139798632,3258675288,2563309347,2908170107,2619954303,2826246821"
+#       - "TMOD_PASS=N/A"
+#       - "TMOD_WORLDNAME=Flying Kows"
+#       - "TMOD_WORLDSIZE=3"
+#       - "TMOD_WORLDSEED=flyingkows"
+#     volumes:
+#       - $DOCKERDIR/appdata/terraria/data:/data
+#     restart: unless-stopped
