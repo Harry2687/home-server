@@ -27,9 +27,9 @@ services:
     ports:
       - 8096:8096
     restart: unless-stopped
-  overseerr:
-    image: sctx/overseerr:latest
-    container_name: overseerr
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
     environment:
       - LOG_LEVEL=debug
       - TZ=$TZ
@@ -37,9 +37,13 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - $DOCKERDIR/appdata/overseerr/config:/app/config
-    dns:
-      - 1.1.1.1
+      - $DOCKERDIR/appdata/jellyseerr:/app/config
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
     restart: unless-stopped
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
