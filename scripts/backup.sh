@@ -6,7 +6,7 @@ RESTIC_PASSWORD="/home/harryzhong/restic_password"
 BACKUP_SOURCE="/home/harryzhong/docker/appdata"
 BACKUP_REPO_REMOTE="rclone:gdrive:Backups/optiplexmediaserver"
 BACKUP_REPO_LOCAL="/media/hd1/backups/appdata"
-KEEP_OPTIONS="--keep-daily 7 --keep-weekly 4 --keep-monthly 3"
+KEEP_OPTIONS="--keep-daily 3 --keep-weekly 2 --keep-monthly 1"
 
 (
   cd $DOCKERDIR
