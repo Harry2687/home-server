@@ -6,3 +6,5 @@ include:
   - path: "compose/network/docker-compose.yml"
   - path: "compose/terraria/docker-compose.yml"
   - path: "compose/watchtower/docker-compose.yml"
+  - path: "compose/immich/docker-compose.yml"
+  - path: "compose/ark/docker-compose.yml"
