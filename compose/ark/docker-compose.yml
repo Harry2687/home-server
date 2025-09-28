@@ -1,0 +1,24 @@
+services:
+  ark_server:
+    restart: always
+    container_name: ark_server
+    image: hermsi/ark-server:latest
+    volumes:
+      - $DOCKERDIR/appdata/ark/ark-server:/app
+      - $DOCKERDIR/appdata/ark/ark-server-backups:/home/steam/ARK-Backups
+    environment:
+      - SESSION_NAME="Flying Kows"
+      - SERVER_MAP="TheIsland"
+      - SERVER_PASSWORD=""
+      - ADMIN_PASSWORD=$ARK_ADMIN_PASSWORD
+    ports:
+      # Port for connections from ARK game client
+      - "7777:7777/udp"
+      # Raw UDP socket port (always Game client port +1)
+      - "7778:7778/udp"
+      # RCON management port
+      - "27020:27020/tcp"
+      # Steam's server-list port
+      - "27015:27015/udp"
+    networks:
+      - default
