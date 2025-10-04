@@ -27,6 +27,10 @@ services:
     ports:
       - 8096:8096
     restart: unless-stopped
+    group_add:
+      - 993
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
   jellyseerr:
     image: fallenbagel/jellyseerr:latest
     container_name: jellyseerr
