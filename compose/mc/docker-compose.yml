@@ -33,15 +33,15 @@ services:
     environment:
       EULA: "TRUE"
       TZ: $TZ
-      VERSION: "1.21.4"
+      VERSION: "1.21.9"
       ICON: "/data/ai_flying_cow.jpeg"
       OVERRIDE_ICON: "TRUE"
       SEED: "flyingkows"
       SERVER_NAME: "Flying Kows"
       MOTD: "Harry's Minecraft Server"
       DIFFICULTY: "normal"
-      RESOURCE_PACK: "https://drive.usercontent.google.com/uc?id=1pX7h1xwOcV30mADx6YWY_5elLJVU_cJP&export=download"
-      RESOURCE_PACK_SHA1: "1befd1dc9e0d5158bbbe2a4b29f6ebad1fe7af81"
+      # RESOURCE_PACK: "https://drive.usercontent.google.com/uc?id=1pX7h1xwOcV30mADx6YWY_5elLJVU_cJP&export=download"
+      # RESOURCE_PACK_SHA1: "1befd1dc9e0d5158bbbe2a4b29f6ebad1fe7af81"
       RESOURCE_PACK_ENFORCE: "TRUE"
       MEMORY: "8G"
       VIEW_DISTANCE: 12
