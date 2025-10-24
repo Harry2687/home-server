@@ -14,7 +14,7 @@ services:
       - sys_module
     command: tailscaled
     privileged: true
-    restart: unless-stopped
+    restart: always
     network_mode: host
   nginxproxymanager:
     container_name: nginxproxymanager
