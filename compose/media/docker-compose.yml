@@ -23,7 +23,9 @@ services:
       - $DOCKERDIR/appdata/jellyfin/config:/config
       - $DOCKERDIR/appdata/jellyfin/cache:/cache
       - $MEDIADIR/TV:/media/tv
+      - $MEDIADIR/TV_4k:/media/tv_4k
       - $MEDIADIR/Movies:/media/movies
+      - $MEDIADIR/Movies_4k:/media/movies_4k
     ports:
       - 8096:8096
     restart: unless-stopped
@@ -96,6 +98,21 @@ services:
     restart: unless-stopped
     dns:
       - 1.1.1.1
+  radarr_4k:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr_4k
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $DOCKERDIR/appdata/radarr_4k/config:/config
+      - $MEDIADIR:/data
+    ports:
+      - 7879:7878
+    restart: unless-stopped
+    dns:
+      - 1.1.1.1
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -108,6 +125,21 @@ services:
       - $MEDIADIR:/data
     ports:
       - 8989:8989
+    restart: unless-stopped
+    dns:
+      - 1.1.1.1
+  sonarr_4k:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr_4k
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $DOCKERDIR/appdata/sonarr_4k/config:/config
+      - $MEDIADIR:/data
+    ports:
+      - 8990:8989
     restart: unless-stopped
     dns:
       - 1.1.1.1
