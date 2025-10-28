@@ -11,13 +11,13 @@ This server is primarily a media server (Jellyfin and Plex), but also hosts game
 ## Hardware
 
 Compute:
-- Dell OptipPex 7060 Micro
+- Dell OptiPlex 7060 Micro
 - Intel i5-8500T
 - 16GB RAM
 - 256GB M.2 SATA SSD boot drive
 
 Storage:
-- 4×16GB WD Ultrastar DC HC550 hard drives
+- 4×16TB WD Ultrastar DC HC550 hard drives
 - TerraMaster D4-320 enclosure
 
 ## Operating system
@@ -39,6 +39,8 @@ Application data for all Docker containers is saved in `./appdata`, this directo
 Rclone is used alongside restic to enable cloud connectivity for off-site backups.
 
 Backups are scheduled weekly using `./scripts/backup.sh`.
+
+Media library files are currently not backed up due to the size of the library. If I lose my media, it is what it is.
 
 ### How to restore `./appdata`
 
