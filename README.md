@@ -36,11 +36,7 @@ Application data for all Docker containers is saved in `./appdata`, this directo
 - Copy 2: restic backup stored on hard drives.
 - Copy 3: restic backup stored on cloud (Google Drive).
 
-Rclone is used alongside restic to enable cloud connectivity for off-site backups.
-
-Backups are scheduled weekly using `./scripts/backup.sh`.
-
-Media library files are currently not backed up due to the size of the library. If I lose my media, it is what it is.
+Rclone is used alongside restic to enable cloud connectivity for off-site backups. Backups are scheduled weekly using `./scripts/backup.sh`. Media library files are currently not backed up due to the size of the library. If I lose my media, it is what it is.
 
 ### How to restore `./appdata`
 
