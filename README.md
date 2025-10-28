@@ -1,4 +1,4 @@
-# My Home Server
+# Home Server
 
 Docker Compose files, scripts, and documentation for my home server.
 
@@ -45,5 +45,5 @@ Rclone is used alongside restic to enable cloud connectivity for off-site backup
 3. Run the command below.
 
 ```bash
-restic -r rclone:gdrive:/Backups/optiplexmediaserver restore latest:/home/harryzhong/docker/appdata --target ./appdata
+restic -r rclone:gdrive:/Backups/optiplexmediaserver restore latest:/home/harryzhong/home-server/appdata --target ./appdata
 ```
