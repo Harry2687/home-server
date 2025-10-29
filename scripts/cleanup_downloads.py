@@ -9,6 +9,7 @@
 # ///
 
 import os
+import shutil
 from dotenv import load_dotenv
 import qbittorrentapi
 
@@ -27,25 +28,28 @@ def confirm(message: str) -> None:
 
 def delete_file_or_dir(path: str) -> None:
     if os.path.isdir(path):
-        os.rmdir(path)
+        shutil.rmtree(path)
     elif os.path.isfile(path):
         os.remove(path)
 
 
 def delete_file_or_dir_with_confirm(
-    path: str, message: str, show_confirm: bool = True
+    path: str, message: str, delete_message: str, show_confirm: bool = True
 ) -> None:
     if show_confirm:
         if confirm(message):
             delete_file_or_dir(path)
+            print(delete_message)
     else:
         delete_file_or_dir(path)
+        print(delete_message)
 
 
 def delete_torrent_with_confirm(
     client: qbittorrentapi.Client,
     hash: str,
     message: str,
+    delete_message: str,
     downloads_directory: str,
     show_confirm: bool = True,
 ) -> None:
@@ -55,9 +59,11 @@ def delete_torrent_with_confirm(
         if confirm(message):
             client.torrents_delete(delete_files=False, torrent_hashes=hash)
             delete_file_or_dir(file_or_folder_path)
+            print(delete_message)
     else:
         client.torrents_delete(delete_files=False, torrent_hashes=hash)
         delete_file_or_dir(file_or_folder_path)
+        print(delete_message)
 
 
 def main(
@@ -90,9 +96,9 @@ def main(
             delete_file_or_dir_with_confirm(
                 path=f"{downloads_directory}/{entry}",
                 message=f"Not a torrent: {entry} | Delete? (yes/no): ",
+                delete_message=f"Deleted file/directory (not a torrent): {entry}",
                 show_confirm=show_confirm,
             )
-            print(f"Deleted file/directory (not a torrent): {entry}")
     else:
         print("All files and directories are linked to a torrent.")
 
@@ -109,9 +115,9 @@ def main(
                     hash=torrent.hash,
                     downloads_directory=downloads_directory,
                     message=f"Not a hard link: {file_name} | Delete? (yes/no): ",
+                    delete_message=f"Deleted file (not hard linked): {file_name}",
                     show_confirm=show_confirm,
                 )
-                print(f"Deleted file (not hard linked): {file_name}")
                 n_torrents_with_no_hardlinks += 1
         else:
             folder_name = files[0].name.split("/")[0]
@@ -131,9 +137,9 @@ def main(
                     hash=torrent.hash,
                     downloads_directory=downloads_directory,
                     message=f"Does not contain hard links: {folder_name} | Delete? (yes/no): ",
+                    delete_message=f"Deleted directory (no hard links): {folder_name}",
                     show_confirm=show_confirm,
                 )
-                print(f"Deleted directory (no hard links): {folder_name}")
                 n_torrents_with_no_hardlinks += 1
 
     if n_torrents_with_no_hardlinks == 0:
