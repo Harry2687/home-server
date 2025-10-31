@@ -16,7 +16,7 @@ rotate_log() {
   echo "[$(date)] Log rotated: ${LOG_FILE}.${timestamp}"
 }
 
-if [[ -f "$LOG_FILE" && $(stat -c%s "$LOG_FILE") -gt $MAX_SIZE ]]; then
+if [[ -f "$LOG_FILE" && $(stat -c%s "$LOG_FILE") -gt $MAX_LOG_SIZE ]]; then
   rotate_log
 fi
 
