@@ -1,0 +1,22 @@
+services:
+  scrutiny:
+    restart: unless-stopped
+    container_name: scrutiny
+    image: ghcr.io/analogj/scrutiny:master-omnibus
+    cap_add:
+      - SYS_RAWIO
+    environment:
+      - TZ=$TZ
+    ports:
+      - "8090:8080" # webapp
+      - "8086:8086" # influxDB admin
+    volumes:
+      - /run/udev:/run/udev:ro
+      - $DOCKERDIR/appdata/scrutiny/config:/opt/scrutiny/config
+      - $DOCKERDIR/appdata/scrutiny/influxdb:/opt/scrutiny/influxdb
+    devices:
+      - "/dev/sdc"
+      - "/dev/sdd"
+      - "/dev/sde"
+      - "/dev/sdf"
+      - "/dev/sda"
