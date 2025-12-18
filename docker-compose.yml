@@ -9,3 +9,4 @@ include:
   - path: "compose/immich/docker-compose.yml"
   - path: "compose/ark/docker-compose.yml"
   - path: "compose/hdd_monitoring/docker-compose.yml"
+  - path: "compose/firefox/docker-compose.yml"
