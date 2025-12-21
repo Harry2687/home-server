@@ -26,6 +26,7 @@ services:
       - $MEDIADIR/TV_4k:/media/tv_4k
       - $MEDIADIR/Movies:/media/movies
       - $MEDIADIR/Movies_4k:/media/movies_4k
+      - $MEDIADIR/Boovies:/media/boovies
     ports:
       - 8096:8096
     restart: unless-stopped
