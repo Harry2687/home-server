@@ -147,10 +147,14 @@ def main(
 
 
 if __name__ == "__main__":
-    downloads_directory = "/media/storage/arr_data/downloads"
+    downloads_directory = f"{os.getenv('MEDIADIR')}/downloads"
     qbt_client = qbittorrentapi.Client(
         host="localhost:8080",
         username=os.getenv("QBIT_USER"),
         password=os.getenv("QBIT_PWD"),
     )
-    main(qbt_client=qbt_client, downloads_directory=downloads_directory)
+    main(
+        qbt_client=qbt_client,
+        downloads_directory=downloads_directory,
+        show_confirm=False,
+    )
