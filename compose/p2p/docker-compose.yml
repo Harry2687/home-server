@@ -11,6 +11,26 @@ services:
     volumes:
       - $DOCKERDIR/appdata/qbittorrent/config:/config
       - $MEDIADIR:/data
+    restart: unless-stopped
+    network_mode: service:gluetun
+    depends_on:
+      gluetun:
+        condition: service_healthy
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - TZ=$TZ
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - OPENVPN_USER=$OPENVPN_USER
+      - OPENVPN_PASSWORD=$OPENVPN_PASSWORD
+      - SERVER_COUNTRIES=$SERVER_COUNTRIES
+      - PORT_FORWARD_ONLY=on
+      - VPN_PORT_FORWARDING=on
     ports:
       - 8080:8080
       - 6881:6881
