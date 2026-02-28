@@ -52,23 +52,6 @@ services:
       interval: 15s
       retries: 3
     restart: unless-stopped
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-      - WEBUI_PORT=8080
-      - TORRENTING_PORT=6881
-    volumes:
-      - $DOCKERDIR/appdata/qbittorrent/config:/config
-      - $MEDIADIR:/data
-    ports:
-      - 8080:8080
-      - 6881:6881
-      - 6881:6881/udp
-    restart: unless-stopped
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
