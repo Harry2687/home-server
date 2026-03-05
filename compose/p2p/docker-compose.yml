@@ -31,6 +31,8 @@ services:
       - SERVER_COUNTRIES=$SERVER_COUNTRIES
       - PORT_FORWARD_ONLY=on
       - VPN_PORT_FORWARDING=on
+    labels:
+      - "com.centurylinklabs.watchtower.depends-on=qbittorrent"
     ports:
       - 8080:8080
       - 6881:6881
