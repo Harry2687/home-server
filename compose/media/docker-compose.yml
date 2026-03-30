@@ -14,8 +14,6 @@ services:
       - $MEDIADIR/TV:/tv
       - $MEDIADIR/Movies:/movies
     restart: unless-stopped
-    dns:
-      - 1.1.1.1
   jellyfin:
     image: ghcr.io/jellyfin/jellyfin:latest
     container_name: jellyfin
@@ -64,9 +62,6 @@ services:
     ports:
       - 9696:9696
     restart: unless-stopped
-    dns:
-      - 1.1.1.1
-      - 1.0.0.1
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
@@ -80,8 +75,6 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
-    dns:
-      - 1.1.1.1
   radarr_4k:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr_4k
@@ -95,8 +88,6 @@ services:
     ports:
       - 7879:7878
     restart: unless-stopped
-    dns:
-      - 1.1.1.1
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -110,8 +101,6 @@ services:
     ports:
       - 8989:8989
     restart: unless-stopped
-    dns:
-      - 1.1.1.1
   sonarr_4k:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr_4k
@@ -125,8 +114,6 @@ services:
     ports:
       - 8990:8989
     restart: unless-stopped
-    dns:
-      - 1.1.1.1
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
