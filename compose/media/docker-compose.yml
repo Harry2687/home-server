@@ -88,6 +88,19 @@ services:
     ports:
       - 7879:7878
     restart: unless-stopped
+  radarr_anime:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr_anime
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $DOCKERDIR/appdata/radarr_anime/config:/config
+      - $MEDIADIR:/data
+    ports:
+      - 7880:7878
+    restart: unless-stopped
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -114,6 +127,19 @@ services:
     ports:
       - 8990:8989
     restart: unless-stopped
+  sonarr_anime:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr_anime
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $DOCKERDIR/appdata/sonarr_anime/config:/config
+      - $MEDIADIR:/data
+    ports:
+      - 8991:8989
+    restart: unless-stopped
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
@@ -128,7 +154,7 @@ services:
       - 6767:6767
     restart: unless-stopped
   recyclarr:
-    image: ghcr.io/recyclarr/recyclarr:latest
+    image: ghcr.io/recyclarr/recyclarr:7
     container_name: recyclarr
     user: $PUID:$PGID
     volumes:
