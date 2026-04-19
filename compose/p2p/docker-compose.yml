@@ -33,6 +33,8 @@ services:
       - SERVER_COUNTRIES=$SERVER_COUNTRIES
       - PORT_FORWARD_ONLY=on
       - VPN_PORT_FORWARDING=on
+      - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":{{PORTS}}}" http://127.0.0.1:8080/api/v2/app/setPreferences 2>&1'
+      - HEALTH_SUCCESS_WAIT_DURATION=99999h
     ports:
       - 8080:8080
       - 6881:6881
