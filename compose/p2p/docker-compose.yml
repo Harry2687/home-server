@@ -17,7 +17,7 @@ services:
       - "com.centurylinklabs.watchtower.depends-on=gluetun"
     depends_on:
       gluetun:
-        condition: service_healthy
+        condition: service_started
   gluetun:
     image: qmcgaw/gluetun:latest
     container_name: gluetun
