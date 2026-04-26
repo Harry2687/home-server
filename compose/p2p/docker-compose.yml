@@ -1,6 +1,6 @@
 services:
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
+    image: ghcr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     environment:
       - PUID=$PUID
@@ -19,7 +19,7 @@ services:
       gluetun:
         condition: service_started
   gluetun:
-    image: qmcgaw/gluetun:latest
+    image: ghcr.io/qdm12/gluetun:latest
     container_name: gluetun
     cap_add:
       - NET_ADMIN

@@ -1,6 +1,6 @@
 services:
   plex:
-    image: lscr.io/linuxserver/plex:latest
+    image: ghcr.io/linuxserver/plex:latest
     container_name: plex
     network_mode: host
     environment:
@@ -8,14 +8,13 @@ services:
       - PGID=$PGID
       - TZ=$TZ
       - VERSION=docker
-      - PLEX_CLAIM= #optional
     volumes:
       - $DOCKERDIR/appdata/plex/config:/config
       - $MEDIADIR/TV:/tv
       - $MEDIADIR/Movies:/movies
     restart: unless-stopped
   jellyfin:
-    image: ghcr.io/jellyfin/jellyfin:latest
+    image: ghcr.io/jellyfin/jellyfin:10
     container_name: jellyfin
     volumes:
       - $DOCKERDIR/appdata/jellyfin/config:/config
@@ -32,9 +31,10 @@ services:
       - 993
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
-  jellyseerr:
-    image: fallenbagel/jellyseerr:latest
-    container_name: jellyseerr
+  seerr:
+    image: ghcr.io/seerr-team/seerr:v3
+    init: true
+    container_name: seerr
     environment:
       - LOG_LEVEL=debug
       - TZ=$TZ
@@ -51,7 +51,7 @@ services:
       retries: 3
     restart: unless-stopped
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest
+    image: ghcr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     environment:
       - PUID=$PUID
@@ -63,7 +63,7 @@ services:
       - 9696:9696
     restart: unless-stopped
   radarr:
-    image: lscr.io/linuxserver/radarr:latest
+    image: ghcr.io/linuxserver/radarr:latest
     container_name: radarr
     environment:
       - PUID=$PUID
@@ -76,7 +76,7 @@ services:
       - 7878:7878
     restart: unless-stopped
   radarr_4k:
-    image: lscr.io/linuxserver/radarr:latest
+    image: ghcr.io/linuxserver/radarr:latest
     container_name: radarr_4k
     environment:
       - PUID=$PUID
@@ -89,7 +89,7 @@ services:
       - 7879:7878
     restart: unless-stopped
   radarr_anime:
-    image: lscr.io/linuxserver/radarr:latest
+    image: ghcr.io/linuxserver/radarr:latest
     container_name: radarr_anime
     environment:
       - PUID=$PUID
@@ -102,7 +102,7 @@ services:
       - 7880:7878
     restart: unless-stopped
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest
+    image: ghcr.io/linuxserver/sonarr:latest
     container_name: sonarr
     environment:
       - PUID=$PUID
@@ -115,7 +115,7 @@ services:
       - 8989:8989
     restart: unless-stopped
   sonarr_4k:
-    image: lscr.io/linuxserver/sonarr:latest
+    image: ghcr.io/linuxserver/sonarr:latest
     container_name: sonarr_4k
     environment:
       - PUID=$PUID
@@ -128,7 +128,7 @@ services:
       - 8990:8989
     restart: unless-stopped
   sonarr_anime:
-    image: lscr.io/linuxserver/sonarr:latest
+    image: ghcr.io/linuxserver/sonarr:latest
     container_name: sonarr_anime
     environment:
       - PUID=$PUID
@@ -141,7 +141,7 @@ services:
       - 8991:8989
     restart: unless-stopped
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest
+    image: ghcr.io/linuxserver/bazarr:latest
     container_name: bazarr
     environment:
       - PUID=$PUID
@@ -162,7 +162,6 @@ services:
     environment:
       - TZ=$TZ
   flaresolverr:
-    # DockerHub mirror flaresolverr/flaresolverr:latest
     image: ghcr.io/flaresolverr/flaresolverr:latest
     container_name: flaresolverr
     environment:
