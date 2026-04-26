@@ -11,3 +11,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
       - /media/storage:/media/storage:ro
     restart: unless-stopped
+  uptime_kuma:
+    image: ghcr.io/louislam/uptime-kuma:2
+    container_name: uptime_kuma
+    restart: unless-stopped
+    volumes:
+      - $DOCKERDIR/appdata/uptime_kuma:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 3004:3001
