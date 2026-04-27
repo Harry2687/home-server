@@ -153,6 +153,32 @@ services:
     ports:
       - 6767:6767
     restart: unless-stopped
+  bazarr_4k:
+    image: ghcr.io/linuxserver/bazarr:latest
+    container_name: bazarr_4k
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $DOCKERDIR/appdata/bazarr_4k/config:/config
+      - $MEDIADIR:/data
+    ports:
+      - 6768:6767
+    restart: unless-stopped
+  bazarr_anime:
+    image: ghcr.io/linuxserver/bazarr:latest
+    container_name: bazarr_anime
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $DOCKERDIR/appdata/bazarr_anime/config:/config
+      - $MEDIADIR:/data
+    ports:
+      - 6769:6767
+    restart: unless-stopped
   recyclarr:
     image: ghcr.io/recyclarr/recyclarr:7
     container_name: recyclarr
