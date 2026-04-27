@@ -179,13 +179,16 @@ services:
     ports:
       - 6769:6767
     restart: unless-stopped
-  recyclarr:
-    image: ghcr.io/recyclarr/recyclarr:7
-    container_name: recyclarr
-    user: $PUID:$PGID
+  profilarr:
+    image: santiagosayshey/profilarr:latest
+    container_name: profilarr
+    ports:
+      - 6868:6868
     volumes:
-      - $DOCKERDIR/appdata/recyclarr/config:/config
+      - $DOCKERDIR/appdata/profilarr/config:/config
     environment:
+      - PUID=$PUID
+      - PGID=$PGID
       - TZ=$TZ
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
