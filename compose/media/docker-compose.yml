@@ -31,6 +31,16 @@ services:
       - 993
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
+    entrypoint:
+      - /bin/bash
+      - -c
+      - |
+        dpkg -s libvulkan1 > /dev/null 2>&1 || \
+          (apt-get update -qq && \
+           apt-get install -y -qq --no-install-recommends \
+             libvulkan1 mesa-vulkan-drivers libgomp1 > /dev/null 2>&1 && \
+           rm -rf /var/lib/apt/lists/*)
+        exec /jellyfin/jellyfin
   seerr:
     image: ghcr.io/seerr-team/seerr:v3
     init: true
