@@ -1,5 +1,14 @@
 {
 	# Global options
+	order crowdsec first
+	crowdsec {
+		api_url http://crowdsec:8080
+		api_key {env.CROWDSEC_API_KEY}
+	}
+	log {
+		output file /var/log/caddy/access.log
+		format json
+	}
 }
 
 # Reusable security headers
@@ -9,6 +18,11 @@
 		X-Content-Type-Options "nosniff"
 		X-XSS-Protection "1; mode=block"
 	}
+}
+
+# CrowdSec snippet
+(crowdsec) {
+	crowdsec
 }
 
 # Snippet for harryzhong.com (Internal)
@@ -23,6 +37,14 @@
 	tls {
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN_PUBLIC}
 	}
+}
+
+jellyfin.harrys-lab.com {
+	log
+	import common_headers
+	import public_tls
+	import crowdsec
+	reverse_proxy jellyfin:8096
 }
 
 homeserver.harryzhong.com {

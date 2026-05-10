@@ -27,10 +27,26 @@ services:
     environment:
       - CLOUDFLARE_API_TOKEN_INTERNAL=$CLOUDFLARE_API_TOKEN_INTERNAL
       - CLOUDFLARE_API_TOKEN_PUBLIC=$CLOUDFLARE_API_TOKEN_PUBLIC
+      - CROWDSEC_API_KEY=$CROWDSEC_API_KEY
     volumes:
       - ./caddy_conf:/etc/caddy
       - $DOCKERDIR/appdata/caddy/data:/data
       - $DOCKERDIR/appdata/caddy/config:/config
+      - $DOCKERDIR/appdata/caddy/logs:/var/log/caddy
+  crowdsec:
+    image: crowdsecurity/crowdsec:latest
+    container_name: crowdsec
+    environment:
+      - GID=1000
+      - COLLECTIONS=crowdsecurity/caddy crowdsecurity/base-http-scenarios
+    volumes:
+      - ./crowdsec_conf/acquis.yaml:/etc/crowdsec/acquis.yaml
+      - $DOCKERDIR/appdata/crowdsec/data:/var/lib/crowdsec/data
+      - $DOCKERDIR/appdata/crowdsec/config:/etc/crowdsec
+      - $DOCKERDIR/appdata/caddy/logs:/var/log/caddy:ro
+    restart: unless-stopped
+    depends_on:
+      - caddy
   adguardhome:
     container_name: adguardhome
     image: adguard/adguardhome:latest
