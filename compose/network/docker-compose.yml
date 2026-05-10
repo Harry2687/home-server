@@ -16,17 +16,21 @@ services:
     privileged: true
     restart: always
     network_mode: host
-  nginxproxymanager:
-    container_name: nginxproxymanager
-    image: jc21/nginx-proxy-manager:2
+  caddy:
+    image: ghcr.io/serfriz/caddy-cloudflare-crowdsec:2
+    container_name: caddy
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
-      - "81:81"
+      - "443:443/udp"
+    environment:
+      - CLOUDFLARE_API_TOKEN_INTERNAL=$CLOUDFLARE_API_TOKEN_INTERNAL
+      - CLOUDFLARE_API_TOKEN_PUBLIC=$CLOUDFLARE_API_TOKEN_PUBLIC
     volumes:
-      - $DOCKERDIR/appdata/nginxproxymanager/data:/data
-      - $DOCKERDIR/appdata/nginxproxymanager/letsencrypt:/etc/letsencrypt
+      - ./caddy_conf:/etc/caddy
+      - $DOCKERDIR/appdata/caddy/data:/data
+      - $DOCKERDIR/appdata/caddy/config:/config
   adguardhome:
     container_name: adguardhome
     image: adguard/adguardhome:latest
@@ -40,9 +44,6 @@ services:
       - 53:53/tcp
       - 53:53/udp
       - 82:80/tcp
-      - 444:443/tcp
-      - 444:443/udp
-      - 3003:3000/tcp
   cloudflare_ddns:
     image: favonia/cloudflare-ddns:1
     container_name: cloudflare_ddns
@@ -52,7 +53,7 @@ services:
     cap_drop: [all]
     security_opt: [no-new-privileges:true]
     environment:
-      - CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN
+      - CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN_PUBLIC
       - DOMAINS=harrys-lab.com
       - PROXIED=true
       - IP6_PROVIDER=none

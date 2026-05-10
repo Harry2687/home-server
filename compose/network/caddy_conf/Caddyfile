@@ -1,0 +1,158 @@
+{
+	# Global options
+}
+
+# Reusable security headers
+(common_headers) {
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		X-XSS-Protection "1; mode=block"
+	}
+}
+
+# Snippet for harryzhong.com (Internal)
+(internal_tls) {
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN_INTERNAL}
+	}
+}
+
+# Snippet for new/public domains
+(public_tls) {
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN_PUBLIC}
+	}
+}
+
+homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy homepage:3000
+}
+
+profilarr.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy profilarr:6868
+}
+
+jellyfin.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy jellyfin:8096
+}
+
+seerr.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy seerr:5055
+}
+
+plex.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy 100.124.170.127:32400
+}
+
+radarr.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy radarr:7878
+}
+
+sonarr.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy sonarr:8989
+}
+
+bazarr.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy bazarr:6767
+}
+
+radarr4k.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy radarr_4k:7878
+}
+
+sonarr4k.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy sonarr_4k:8989
+}
+
+bazarr4k.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy bazarr_4k:6767
+}
+
+radarranime.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy radarr_anime:7878
+}
+
+sonarranime.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy sonarr_anime:8989
+}
+
+bazarranime.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy bazarr_anime:6767
+}
+
+qbittorrent.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy gluetun:8080
+}
+
+prowlarr.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy prowlarr:9696
+}
+
+adguard.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy adguardhome:80
+}
+
+nginx.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy nginxproxymanager:81
+}
+
+scrutiny.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy scrutiny:8080
+}
+
+firefox.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy firefox:3000
+}
+
+photos.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy immich_server:2283
+}
+
+uptime.homeserver.harryzhong.com {
+	import common_headers
+	import internal_tls
+	reverse_proxy uptime_kuma:3001
+}
