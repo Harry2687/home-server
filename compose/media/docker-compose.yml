@@ -26,8 +26,8 @@ services:
       - $MEDIADIR/Movies:/media/movies
       - $MEDIADIR/Movies_4k:/media/movies_4k
       - $MEDIADIR/Boovies:/media/boovies
-    ports:
-      - 8096:8096
+#    ports:
+#      - 8096:8096
     restart: unless-stopped
     group_add:
       - 993
@@ -51,8 +51,8 @@ services:
       - LOG_LEVEL=debug
       - TZ=$TZ
       - PORT=5055 #optional
-    ports:
-      - 5055:5055
+#    ports:
+#      - 5055:5055
     volumes:
       - $DOCKERDIR/appdata/jellyseerr:/app/config
     healthcheck:
@@ -71,8 +71,8 @@ services:
       - TZ=$TZ
     volumes:
       - $DOCKERDIR/appdata/prowlarr/config:/config
-    ports:
-      - 9696:9696
+#    ports:
+#      - 9696:9696
     restart: unless-stopped
   radarr:
     image: ghcr.io/linuxserver/radarr:latest
@@ -84,8 +84,8 @@ services:
     volumes:
       - $DOCKERDIR/appdata/radarr/config:/config
       - $MEDIADIR:/data
-    ports:
-      - 7878:7878
+#    ports:
+#      - 7878:7878
     restart: unless-stopped
   radarr_4k:
     image: ghcr.io/linuxserver/radarr:latest
@@ -97,8 +97,8 @@ services:
     volumes:
       - $DOCKERDIR/appdata/radarr_4k/config:/config
       - $MEDIADIR:/data
-    ports:
-      - 7879:7878
+#    ports:
+#      - 7879:7878
     restart: unless-stopped
   radarr_anime:
     image: ghcr.io/linuxserver/radarr:latest
@@ -110,8 +110,8 @@ services:
     volumes:
       - $DOCKERDIR/appdata/radarr_anime/config:/config
       - $MEDIADIR:/data
-    ports:
-      - 7880:7878
+#    ports:
+#      - 7880:7878
     restart: unless-stopped
   sonarr:
     image: ghcr.io/linuxserver/sonarr:latest
@@ -123,8 +123,8 @@ services:
     volumes:
       - $DOCKERDIR/appdata/sonarr/config:/config
       - $MEDIADIR:/data
-    ports:
-      - 8989:8989
+#    ports:
+#      - 8989:8989
     restart: unless-stopped
   sonarr_4k:
     image: ghcr.io/linuxserver/sonarr:latest
@@ -136,8 +136,8 @@ services:
     volumes:
       - $DOCKERDIR/appdata/sonarr_4k/config:/config
       - $MEDIADIR:/data
-    ports:
-      - 8990:8989
+#    ports:
+#      - 8990:8989
     restart: unless-stopped
   sonarr_anime:
     image: ghcr.io/linuxserver/sonarr:latest
@@ -149,8 +149,8 @@ services:
     volumes:
       - $DOCKERDIR/appdata/sonarr_anime/config:/config
       - $MEDIADIR:/data
-    ports:
-      - 8991:8989
+#    ports:
+#      - 8991:8989
     restart: unless-stopped
   bazarr:
     image: ghcr.io/linuxserver/bazarr:latest
@@ -162,8 +162,8 @@ services:
     volumes:
       - $DOCKERDIR/appdata/bazarr/config:/config
       - $MEDIADIR:/data
-    ports:
-      - 6767:6767
+#    ports:
+#      - 6767:6767
     restart: unless-stopped
   bazarr_4k:
     image: ghcr.io/linuxserver/bazarr:latest
@@ -175,8 +175,8 @@ services:
     volumes:
       - $DOCKERDIR/appdata/bazarr_4k/config:/config
       - $MEDIADIR:/data
-    ports:
-      - 6768:6767
+#    ports:
+#      - 6768:6767
     restart: unless-stopped
   bazarr_anime:
     image: ghcr.io/linuxserver/bazarr:latest
@@ -188,14 +188,14 @@ services:
     volumes:
       - $DOCKERDIR/appdata/bazarr_anime/config:/config
       - $MEDIADIR:/data
-    ports:
-      - 6769:6767
+#    ports:
+#      - 6769:6767
     restart: unless-stopped
   profilarr:
     image: santiagosayshey/profilarr:latest
     container_name: profilarr
-    ports:
-      - 6868:6868
+#    ports:
+#      - 6868:6868
     volumes:
       - $DOCKERDIR/appdata/profilarr/config:/config
     environment:

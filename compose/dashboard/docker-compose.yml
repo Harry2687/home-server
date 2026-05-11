@@ -2,8 +2,8 @@ services:
   homepage:
     image: ghcr.io/gethomepage/homepage:v1
     container_name: homepage
-    ports:
-      - 3000:3000
+#    ports:
+#      - 3000:3000
     environment:
       HOMEPAGE_ALLOWED_HOSTS: "$LOCAL_IP:3000,$TAILCALE_IP:3000,homeserver.harryzhong.com"
       TZ: "$TZ"
@@ -21,5 +21,5 @@ services:
     volumes:
       - $DOCKERDIR/appdata/uptime_kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - 3004:3001
+#    ports:
+#      - 3004:3001

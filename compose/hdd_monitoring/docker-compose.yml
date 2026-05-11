@@ -7,9 +7,9 @@ services:
       - SYS_RAWIO
     environment:
       - TZ=$TZ
-    ports:
-      - "8090:8080" # webapp
-      - "8086:8086" # influxDB admin
+#    ports:
+#      - "8090:8080" # webapp
+#      - "8086:8086" # influxDB admin
     volumes:
       - /run/udev:/run/udev:ro
       - $DOCKERDIR/appdata/scrutiny/config:/opt/scrutiny/config
