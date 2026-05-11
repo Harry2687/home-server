@@ -20,6 +20,15 @@
 	}
 }
 
+# Geoblocking for Cloudflare (AU only)
+(geoblock) {
+	@notAU {
+		header CF-IPCountry *
+		not header CF-IPCountry AU
+	}
+	respond @notAU "Access denied" 403
+}
+
 # CrowdSec snippet
 (crowdsec) {
 	crowdsec
@@ -41,6 +50,7 @@
 
 jellyfin.harrys-lab.com {
 	log
+	import geoblock
 	import common_headers
 	import public_tls
 	import crowdsec
