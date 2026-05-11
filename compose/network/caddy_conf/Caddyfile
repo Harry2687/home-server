@@ -188,3 +188,91 @@ uptime.homeserver.harryzhong.com {
 	import internal_tls
 	reverse_proxy uptime_kuma:3001
 }
+
+http://jellyfin.lan {
+	reverse_proxy jellyfin:8096
+}
+
+http://homeserver.lan {
+	reverse_proxy homepage:3000
+}
+
+http://profilarr.lan {
+	reverse_proxy profilarr:6868
+}
+
+http://seerr.lan {
+	reverse_proxy seerr:5055
+}
+
+http://plex.lan {
+	reverse_proxy 100.124.170.127:32400
+}
+
+http://radarr.lan {
+	reverse_proxy radarr:7878
+}
+
+http://sonarr.lan {
+	reverse_proxy sonarr:8989
+}
+
+http://bazarr.lan {
+	reverse_proxy bazarr:6767
+}
+
+http://radarr4k.lan {
+	reverse_proxy radarr_4k:7878
+}
+
+http://sonarr4k.lan {
+	reverse_proxy sonarr_4k:8989
+}
+
+http://bazarr4k.lan {
+	reverse_proxy bazarr_4k:6767
+}
+
+http://radarranime.lan {
+	reverse_proxy radarr_anime:7878
+}
+
+http://sonarranime.lan {
+	reverse_proxy sonarr_anime:8989
+}
+
+http://bazarranime.lan {
+	reverse_proxy bazarr_anime:6767
+}
+
+http://qbittorrent.lan {
+	reverse_proxy gluetun:8080
+}
+
+http://prowlarr.lan {
+	reverse_proxy prowlarr:9696
+}
+
+http://adguard.lan {
+	reverse_proxy adguardhome:80
+}
+
+http://nginx.lan {
+	reverse_proxy nginxproxymanager:81
+}
+
+http://scrutiny.lan {
+	reverse_proxy scrutiny:8080
+}
+
+http://firefox.lan {
+	reverse_proxy firefox:3000
+}
+
+http://photos.lan {
+	reverse_proxy immich_server:2283
+}
+
+http://uptime.lan {
+	reverse_proxy uptime_kuma:3001
+}
