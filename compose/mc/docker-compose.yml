@@ -13,6 +13,8 @@ services:
       minecraft-network:
         ipv4_address: 172.19.0.2
     restart: unless-stopped
+    environment:
+      TZ: $TZ
     volumes:
       - $DOCKERDIR/appdata/mc/data:/server:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro

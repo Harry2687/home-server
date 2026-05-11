@@ -6,6 +6,7 @@ services:
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_EXTRA_ARGS=--advertise-exit-node
+      - TZ=$TZ
     volumes:
       - $DOCKERDIR/appdata/tailscale/lib:/var/lib # State data will be stored in this directory
       - /dev/net/tun:/dev/net/tun # Required for tailscale to work
@@ -28,6 +29,7 @@ services:
       - CLOUDFLARE_API_TOKEN_INTERNAL=$CLOUDFLARE_API_TOKEN_INTERNAL
       - CLOUDFLARE_API_TOKEN_PUBLIC=$CLOUDFLARE_API_TOKEN_PUBLIC
       - CROWDSEC_API_KEY=$CROWDSEC_API_KEY
+      - TZ=$TZ
     volumes:
       - ./caddy_conf:/etc/caddy
       - $DOCKERDIR/appdata/caddy/data:/data
@@ -39,6 +41,7 @@ services:
     environment:
       - GID=1000
       - COLLECTIONS=crowdsecurity/caddy crowdsecurity/base-http-scenarios
+      - TZ=$TZ
     volumes:
       - ./crowdsec_conf/acquis.yaml:/etc/crowdsec/acquis.yaml
       - $DOCKERDIR/appdata/crowdsec/data:/var/lib/crowdsec/data
@@ -73,3 +76,4 @@ services:
       - DOMAINS=harrys-lab.com,*.harrys-lab.com
       - PROXIED=true
       - IP6_PROVIDER=none
+      - TZ=$TZ

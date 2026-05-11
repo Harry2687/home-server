@@ -13,6 +13,7 @@
 #       - SERVER_PASSWORD=""
 #       - ADMIN_PASSWORD=$ARK_ADMIN_PASSWORD
 #       - STEAM_LOGIN=$STEAM_USERNAME
+#       - TZ=$TZ
 #     ports:
 #       # Port for connections from ARK game client
 #       - "7777:7777/udp"

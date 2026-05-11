@@ -11,6 +11,7 @@
 #       - "TMOD_WORLDNAME=Flying Kows"
 #       - "TMOD_WORLDSIZE=3"
 #       - "TMOD_WORLDSEED=flyingkows"
+#       - TZ=$TZ
 #     volumes:
 #       - $DOCKERDIR/appdata/terraria/data:/data
 #     restart: unless-stopped

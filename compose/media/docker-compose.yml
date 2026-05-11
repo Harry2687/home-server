@@ -16,6 +16,8 @@ services:
   jellyfin:
     image: ghcr.io/jellyfin/jellyfin:10
     container_name: jellyfin
+    environment:
+      - TZ=$TZ
     volumes:
       - $DOCKERDIR/appdata/jellyfin/config:/config
       - $DOCKERDIR/appdata/jellyfin/cache:/cache

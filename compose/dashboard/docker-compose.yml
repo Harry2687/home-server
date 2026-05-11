@@ -6,6 +6,7 @@ services:
       - 3000:3000
     environment:
       HOMEPAGE_ALLOWED_HOSTS: "$LOCAL_IP:3000,$TAILCALE_IP:3000,homeserver.harryzhong.com"
+      TZ: "$TZ"
     volumes:
       - $DOCKERDIR/appdata/homepage/config:/app/config # Make sure your local config directory exists
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
@@ -15,6 +16,8 @@ services:
     image: ghcr.io/louislam/uptime-kuma:2
     container_name: uptime_kuma
     restart: unless-stopped
+    environment:
+      TZ: "$TZ"
     volumes:
       - $DOCKERDIR/appdata/uptime_kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
