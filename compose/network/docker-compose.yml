@@ -70,6 +70,6 @@ services:
     security_opt: [no-new-privileges:true]
     environment:
       - CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN_PUBLIC
-      - DOMAINS=harrys-lab.com
+      - DOMAINS=harrys-lab.com,*.harrys-lab.com
       - PROXIED=true
       - IP6_PROVIDER=none
