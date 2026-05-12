@@ -5,10 +5,12 @@ services:
 #    ports:
 #      - 3000:3000
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: "$LOCAL_IP:3000,$TAILCALE_IP:3000,homeserver.harryzhong.com"
+      HOMEPAGE_ALLOWED_HOSTS: "homeserver.harryzhong.com"
       TZ: "$TZ"
+      HOMEPAGE_VAR_QBIT_USER: "$QBIT_USER"
+      HOMEPAGE_VAR_QBIT_PASS: "$QBIT_PWD"
     volumes:
-      - $DOCKERDIR/appdata/homepage/config:/app/config # Make sure your local config directory exists
+      - ./homepage_config:/app/config # Make sure your local config directory exists
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
       - /media/storage:/media/storage:ro
     restart: unless-stopped

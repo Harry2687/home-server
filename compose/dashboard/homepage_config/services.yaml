@@ -1,0 +1,129 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services
+
+- Media Management:
+    - Profilarr:
+        href: https://profilarr.homeserver.harryzhong.com
+        icon: profilarr.svg
+        server: my-docker
+        container: profilarr
+    - User Interface:
+        - Jellyfin:
+            href: https://jellyfin.homeserver.harryzhong.com
+            icon: jellyfin.svg
+            server: my-docker
+            container: jellyfin
+        - Seerr:
+            href: https://seerr.homeserver.harryzhong.com
+            icon: seerr.svg
+            server: my-docker
+            container: seerr
+        - Plex:
+            href: https://plex.homeserver.harryzhong.com
+            icon: plex.svg
+            server: my-docker
+            container: plex
+    - High Definition (1080p):
+        - Radarr:
+            href: https://radarr.homeserver.harryzhong.com
+            icon: radarr.svg
+            server: my-docker
+            container: radarr
+        - Sonarr:
+            href: https://sonarr.homeserver.harryzhong.com
+            icon: sonarr.svg
+            server: my-docker
+            container: sonarr
+        - Bazarr:
+            href: https://bazarr.homeserver.harryzhong.com
+            icon: bazarr.svg
+            server: my-docker
+            container: bazarr
+    - Ultra High Definition (2160p):
+        - Radarr 4k:
+            href: https://radarr4k.homeserver.harryzhong.com
+            icon: radarr.svg
+            server: my-docker
+            container: radarr_4k
+        - Sonarr 4k:
+            href: https://sonarr4k.homeserver.harryzhong.com
+            icon: sonarr.svg
+            server: my-docker
+            container: sonarr_4k
+        - Bazarr 4k:
+            href: https://bazarr4k.homeserver.harryzhong.com
+            icon: bazarr.svg
+            server: my-docker
+            container: bazarr_4k
+    - Anime:
+        - Radarr Anime:
+            href: https://radarranime.homeserver.harryzhong.com
+            icon: radarr.svg
+            server: my-docker
+            container: radarr_anime
+        - Sonarr Anime:
+            href: https://sonarranime.homeserver.harryzhong.com
+            icon: sonarr.svg
+            server: my-docker
+            container: sonarr_anime
+        - Bazarr Anime:
+            href: https://bazarranime.homeserver.harryzhong.com
+            icon: bazarr.svg
+            server: my-docker
+            container: bazarr_anime
+
+- Networking:
+    - qBittorrent:
+        href: https://qbittorrent.homeserver.harryzhong.com
+        icon: qbittorrent.svg
+        server: my-docker
+        container: qbittorrent
+        widget:
+            type: qbittorrent
+            url: http://gluetun:8080
+            username: "{{HOMEPAGE_VAR_QBIT_USER}}"
+            password: "{{HOMEPAGE_VAR_QBIT_PASS}}"
+            fields: ["leech", "seed", "download", "upload"]
+    - Prowlarr:
+        href: https://prowlarr.homeserver.harryzhong.com
+        icon: prowlarr.svg
+        server: my-docker
+        container: prowlarr
+    - AdGuard Home:
+        href: https://adguard.homeserver.harryzhong.com
+        icon: adguard-home.svg
+        server: my-docker
+        container: adguardhome
+- Misc:
+    - Game Servers:
+        - Minecraft:
+            server: my-docker
+            container: mc
+            widget:
+            type: minecraft
+            url: udp://100.124.170.127:25565
+        - Terraria:
+            server: my-docker
+            container: tmodloader
+    - Hardware Monitoring:
+        - Scrutiny:
+            href: https://scrutiny.homeserver.harryzhong.com
+            icon: scrutiny.svg
+            server: my-docker
+            container: scrutiny
+    - Firefox:
+        href: https://firefox.homeserver.harryzhong.com
+        icon: firefox.svg
+        server: my-docker
+        container: firefox
+    - Immich:
+        href: https://photos.homeserver.harryzhong.com
+        icon: immich.svg
+        server: my-docker
+        container: immich_server
+    - Uptime Kuma:
+        href: https://uptime.homeserver.harryzhong.com
+        icon: uptime-kuma.svg
+        server: my-docker
+        container: uptime_kuma
