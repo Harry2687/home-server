@@ -9,8 +9,8 @@ services:
       - VERSION=docker
     volumes:
       - $DOCKERDIR/appdata/plex/config:/config
-      - $MEDIADIR/TV:/tv
-      - $MEDIADIR/Movies:/movies
+      - $MEDIADIR/TV:/tv:ro
+      - $MEDIADIR/Movies:/movies:ro
     # ports:
     #   - 32400:32400
     restart: unless-stopped
@@ -22,11 +22,11 @@ services:
     volumes:
       - $DOCKERDIR/appdata/jellyfin/config:/config
       - $DOCKERDIR/appdata/jellyfin/cache:/cache
-      - $MEDIADIR/TV:/media/tv
-      - $MEDIADIR/TV_4k:/media/tv_4k
-      - $MEDIADIR/Movies:/media/movies
-      - $MEDIADIR/Movies_4k:/media/movies_4k
-      - $MEDIADIR/Boovies:/media/boovies
+      - $MEDIADIR/TV:/media/tv:ro
+      - $MEDIADIR/TV_4k:/media/tv_4k:ro
+      - $MEDIADIR/Movies:/media/movies:ro
+      - $MEDIADIR/Movies_4k:/media/movies_4k:ro
+      - $MEDIADIR/Boovies:/media/boovies:ro
 #    ports:
 #      - 8096:8096
     restart: unless-stopped
