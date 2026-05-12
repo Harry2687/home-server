@@ -84,7 +84,7 @@ seerr.homeserver.harryzhong.com {
 plex.homeserver.harryzhong.com {
 	import common_headers
 	import internal_tls
-	reverse_proxy 100.124.170.127:32400
+	reverse_proxy plex:32400
 }
 
 radarr.homeserver.harryzhong.com {

@@ -2,7 +2,6 @@ services:
   plex:
     image: ghcr.io/linuxserver/plex:latest
     container_name: plex
-    network_mode: host
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -12,6 +11,8 @@ services:
       - $DOCKERDIR/appdata/plex/config:/config
       - $MEDIADIR/TV:/tv
       - $MEDIADIR/Movies:/movies
+    # ports:
+    #   - 32400:32400
     restart: unless-stopped
   jellyfin:
     image: ghcr.io/jellyfin/jellyfin:10
