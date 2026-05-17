@@ -40,3 +40,23 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+  cleanup_downloads:
+    image: ghcr.io/astral-sh/uv:python3.12-alpine
+    container_name: cleanup_downloads
+    volumes:
+      - $DOCKERDIR/scripts/cleanup_downloads.py:/app/cleanup_downloads.py:ro
+      - $MEDIADIR:/data
+    environment:
+      - MEDIADIR=/data
+      - QBIT_USER=$QBIT_USER
+      - QBIT_PWD=$QBIT_PWD
+      - QBIT_HOST=http://gluetun:8080
+      - TZ=$TZ
+      - CRON_SCHEDULE=0 3 * * *
+      - PYTHONUNBUFFERED=1
+    working_dir: /app
+    command: uv run cleanup_downloads.py
+    restart: unless-stopped
+    depends_on:
+      qbittorrent:
+        condition: service_started
