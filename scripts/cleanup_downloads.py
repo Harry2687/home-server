@@ -9,13 +9,14 @@
 # ]
 # ///
 
+import logging
 import os
 import shutil
-import logging
-from dotenv import load_dotenv
+
 import qbittorrentapi
 from apscheduler.schedulers.blocking import BlockingScheduler
 from apscheduler.triggers.cron import CronTrigger
+from dotenv import load_dotenv
 
 # Configure logging
 logging.basicConfig(
