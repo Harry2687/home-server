@@ -15,8 +15,8 @@ services:
       - $DOCKERDIR/appdata/scrutiny/config:/opt/scrutiny/config
       - $DOCKERDIR/appdata/scrutiny/influxdb:/opt/scrutiny/influxdb
     devices:
+      - "/dev/sda"
+      - "/dev/sdb"
       - "/dev/sdc"
       - "/dev/sdd"
       - "/dev/sde"
-      - "/dev/sdf"
-      - "/dev/sda"
