@@ -27,8 +27,8 @@ services:
       - $MEDIADIR/Movies:/media/movies:ro
       - $MEDIADIR/Movies_4k:/media/movies_4k:ro
       - $MEDIADIR/Boovies:/media/boovies:ro
-#    ports:
-#      - 8096:8096
+    ports:
+      - 8096:8096
     restart: unless-stopped
     group_add:
       - 993
