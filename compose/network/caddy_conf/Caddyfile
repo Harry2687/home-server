@@ -1,8 +1,5 @@
 {
 	# Global options
-	servers {
-		trusted_proxies cloudflare
-	}
 	order crowdsec first
 	crowdsec {
 		api_url http://crowdsec:8080
@@ -21,15 +18,6 @@
 		X-Content-Type-Options "nosniff"
 		X-XSS-Protection "1; mode=block"
 	}
-}
-
-# Geoblocking for Cloudflare (AU only)
-(geoblock) {
-	@notAU {
-		header CF-IPCountry *
-		not header CF-IPCountry AU
-	}
-	respond @notAU "Access denied" 403
 }
 
 # CrowdSec snippet
@@ -53,7 +41,6 @@
 
 jellyfin.harrys-lab.com {
 	log
-	import geoblock
 	import common_headers
 	import public_tls
 	import crowdsec

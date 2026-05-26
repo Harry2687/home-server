@@ -74,6 +74,6 @@ services:
     environment:
       - CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN_PUBLIC
       - DOMAINS=harrys-lab.com,*.harrys-lab.com
-      - PROXIED=true
+      - PROXIED=false
       - IP6_PROVIDER=none
       - TZ=$TZ
