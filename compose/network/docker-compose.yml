@@ -50,6 +50,19 @@ services:
     restart: unless-stopped
     depends_on:
       - caddy
+  crowdsec_web_ui:
+    image: ghcr.io/theduffman85/crowdsec-web-ui:latest
+    container_name: crowdsec_web_ui
+    # ports:
+    #   - "3000:3000"
+    environment:
+      - CROWDSEC_URL=http://crowdsec:8080
+      - CROWDSEC_USER=crowdsec-web-ui
+      - CROWDSEC_PASSWORD=$CROWDSEC_GUI_PWD
+      - TZ=$TZ
+    volumes:
+      - $DOCKERDIR/appdata/crowdsec_web_ui/data:/app/data
+    restart: unless-stopped
   adguardhome:
     container_name: adguardhome
     image: adguard/adguardhome:latest
