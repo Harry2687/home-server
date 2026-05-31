@@ -1,19 +1,4 @@
 services:
-  plex:
-    image: ghcr.io/linuxserver/plex:latest
-    container_name: plex
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-      - VERSION=docker
-    volumes:
-      - $DOCKERDIR/appdata/plex/config:/config
-      - $MEDIADIR/TV:/tv:ro
-      - $MEDIADIR/Movies:/movies:ro
-    # ports:
-    #   - 32400:32400
-    restart: unless-stopped
   jellyfin:
     image: ghcr.io/jellyfin/jellyfin:10
     container_name: jellyfin
