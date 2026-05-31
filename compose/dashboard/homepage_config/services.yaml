@@ -19,11 +19,6 @@
             icon: seerr.svg
             server: my-docker
             container: seerr
-        - Plex:
-            href: https://plex.homeserver.harryzhong.com
-            icon: plex.svg
-            server: my-docker
-            container: plex
     - High Definition (1080p):
         - Radarr:
             href: https://radarr.homeserver.harryzhong.com
@@ -95,6 +90,11 @@
         icon: adguard-home.svg
         server: my-docker
         container: adguardhome
+    - Crowdsec Web UI:
+        href: https://crowdsec.homeserver.harryzhong.com
+        icon: crowdsec.svg
+        server: my-docker
+        container: crowdsec
 - Misc:
     - Game Servers:
         - Minecraft:
