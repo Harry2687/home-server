@@ -112,11 +112,6 @@
             icon: scrutiny.svg
             server: my-docker
             container: scrutiny
-    - Firefox:
-        href: https://firefox.homeserver.harryzhong.com
-        icon: firefox.svg
-        server: my-docker
-        container: firefox
     - Immich:
         href: https://photos.homeserver.harryzhong.com
         icon: immich.svg
