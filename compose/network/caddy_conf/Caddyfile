@@ -47,6 +47,14 @@ jellyfin.harrys-lab.com {
 	reverse_proxy jellyfin:8096
 }
 
+immich.harrys-lab.com {
+	log
+	import common_headers
+	import public_tls
+	import crowdsec
+	reverse_proxy immich_server:2283
+}
+
 homeserver.harryzhong.com {
 	import common_headers
 	import internal_tls
