@@ -2,9 +2,11 @@ services:
   watchtower:
     container_name: watchtower
     image: ghcr.io/nicholas-fedor/watchtower:1
+    restart: unless-stopped
     environment:
       - TZ=$TZ
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_UPDATE_ON_START=true
+      - WATCHTOWER_STARTUP_DELAY=30s
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
