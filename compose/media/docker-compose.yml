@@ -178,7 +178,7 @@ services:
 #      - 6769:6767
     restart: unless-stopped
   profilarr:
-    image: santiagosayshey/profilarr:latest
+    image: ghcr.io/dictionarry-hub/profilarr:latest
     container_name: profilarr
 #    ports:
 #      - 6868:6868
@@ -188,6 +188,7 @@ services:
       - PUID=$PUID
       - PGID=$PGID
       - TZ=$TZ
+      - ORIGIN=$PROFILARR_ORIGIN
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
     container_name: flaresolverr
