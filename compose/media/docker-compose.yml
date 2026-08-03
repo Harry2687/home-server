@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: ghcr.io/jellyfin/jellyfin:v10.11.11
+    image: ghcr.io/jellyfin/jellyfin:10.11.11
     container_name: jellyfin
     environment:
       - TZ=$TZ
@@ -178,7 +178,7 @@ services:
 #      - 6769:6767
     restart: unless-stopped
   profilarr:
-    image: ghcr.io/dictionarry-hub/profilarr:v2.0.9
+    image: ghcr.io/dictionarry-hub/profilarr:latest
     container_name: profilarr
 #    ports:
 #      - 6868:6868

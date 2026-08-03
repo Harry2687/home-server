@@ -18,7 +18,7 @@ services:
     restart: always
     network_mode: host
   caddy:
-    image: ghcr.io/serfriz/caddy-cloudflare-crowdsec:v2.11.4
+    image: ghcr.io/serfriz/caddy-cloudflare-crowdsec:2.11.4
     container_name: caddy
     restart: unless-stopped
     ports:
