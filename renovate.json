@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
   "packageRules": [
     {
@@ -10,18 +10,18 @@
     },
     {
       "description": "Group LinuxServer.io media stack updates together",
-      "matchPackagePatterns": [
-        "^ghcr\\.io/linuxserver/"
-      ],
       "groupName": "linuxserver-media-stack",
-      "schedule": ["before 5am on monday"]
+      "schedule": ["before 5am on monday"],
+      "matchPackageNames": [
+        "/^ghcr\\.io/linuxserver//"
+      ]
     },
     {
       "description": "Group Immich updates together (must run matching versions)",
-      "matchPackagePatterns": [
-        "^ghcr\\.io/immich-app/"
-      ],
-      "groupName": "immich-stack"
+      "groupName": "immich-stack",
+      "matchPackageNames": [
+        "/^ghcr\\.io/immich-app//"
+      ]
     }
   ]
 }
