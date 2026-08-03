@@ -178,7 +178,7 @@ services:
 #      - 6769:6767
     restart: unless-stopped
   profilarr:
-    image: ghcr.io/dictionarry-hub/profilarr:latest
+    image: ghcr.io/dictionarry-hub/profilarr:2.0.9
     container_name: profilarr
 #    ports:
 #      - 6868:6868
