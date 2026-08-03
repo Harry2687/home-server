@@ -1,7 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "mergeConfidence:all-badges"
   ],
   "packageRules": [
     {
@@ -22,6 +23,12 @@
       "matchPackageNames": [
         "/^ghcr\\.io/immich-app//"
       ]
+    },
+    {
+      "description": "Highlight and isolate major updates (breaking changes)",
+      "matchUpdateTypes": ["major"],
+      "labels": ["breaking", "major"],
+      "dependencyDashboardApproval": true
     }
   ]
 }
