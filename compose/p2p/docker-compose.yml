@@ -19,7 +19,7 @@ services:
       gluetun:
         condition: service_started
   gluetun:
-    image: ghcr.io/qdm12/gluetun:latest
+    image: ghcr.io/qdm12/gluetun:v3.41.3
     container_name: gluetun
     cap_add:
       - NET_ADMIN
