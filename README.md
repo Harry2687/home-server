@@ -2,7 +2,7 @@
 
 Docker Compose files, scripts, and documentation for my home server.
 
-![Homepage dashboard](images/homepage.png) ![System specifications](images/neofetch.png)
+![System specifications](images/neofetch.png)
 
 ## Purpose
 
