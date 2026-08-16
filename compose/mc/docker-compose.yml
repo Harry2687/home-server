@@ -6,36 +6,62 @@ networks:
         - subnet: 172.19.0.0/16
 
 services:
+  router:
+    container_name: mc-router
+    image: itzg/mc-router
+    networks:
+      minecraft-network:
+        ipv4_address: 172.19.0.2
+    depends_on:
+      - lazymc
+    environment:
+      MAPPING: |
+        mc1.harrys-lab.com=lazymc:25565
+        mc2.harrys-lab.com=lazymc:25566
+    ports:
+      - "25565:25565"
+    restart: unless-stopped
+
   lazymc:
     container_name: lazymc
     image: ghcr.io/joesturge/lazymc-docker-proxy:v2.7.5
     networks:
       minecraft-network:
-        ipv4_address: 172.19.0.2
+        ipv4_address: 172.19.0.3
     restart: unless-stopped
     environment:
       TZ: $TZ
+      RUST_LOG: "trace"
     volumes:
-      - $DOCKERDIR/appdata/mc/data:/server:ro
+      - $DOCKERDIR/appdata/mc/data:/server/mc1:ro
+      - $DOCKERDIR/appdata/mc2/data:/server/mc2:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    ports:
-      - "25565:25565"
-  mc:
-    container_name: mc
+
+  mc1:
+    container_name: mc1
     image: itzg/minecraft-server:2026.8.0
     networks:
       minecraft-network:
-        ipv4_address: 172.19.0.3
+        ipv4_address: 172.19.0.4
     tty: true
     stdin_open: true
     labels:
       - lazymc.enabled=true
-      - lazymc.group=mc
-      - lazymc.server.address=mc:25565
+      - lazymc.group=mc1
+      - lazymc.server.address=mc1:25565
+      - lazymc.port=25565
+      - lazymc.server.directory=/server/mc1
     environment:
       EULA: "TRUE"
       TZ: $TZ
+      TYPE: "FABRIC"
       VERSION: "1.21.9"
+      USE_AIKAR_FLAGS: "true"
+      MODRINTH_PROJECTS: |
+        lithium
+        ferrite-core
+        modernfix-mvus
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       ICON: "/data/ai_flying_cow.jpeg"
       OVERRIDE_ICON: "TRUE"
       SEED: "flyingkows"
@@ -50,3 +76,33 @@ services:
     restart: no
     volumes:
       - $DOCKERDIR/appdata/mc/data:/data
+
+  mc2:
+    container_name: mc2
+    image: itzg/minecraft-server:2026.8.0
+    networks:
+      minecraft-network:
+        ipv4_address: 172.19.0.5
+    tty: true
+    stdin_open: true
+    labels:
+      - lazymc.enabled=true
+      - lazymc.group=mc2
+      - lazymc.server.address=mc2:25565
+      - lazymc.port=25566
+      - lazymc.server.directory=/server/mc2
+    environment:
+      EULA: "TRUE"
+      TZ: $TZ
+      TYPE: "FABRIC"
+      VERSION: "LATEST"
+      USE_AIKAR_FLAGS: "true"
+      MODRINTH_PROJECTS: |
+        lithium
+        ferrite-core
+        modernfix-mvus
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+      MEMORY: "4G"
+    restart: no
+    volumes:
+      - $DOCKERDIR/appdata/mc2/data:/data
