@@ -32,7 +32,7 @@ services:
       TZ: $TZ
       RUST_LOG: "trace"
     volumes:
-      - $DOCKERDIR/appdata/mc/data:/server/mc1:ro
+      - $DOCKERDIR/appdata/mc1/data:/server/mc1:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   mc1:
@@ -83,4 +83,4 @@ services:
       VIEW_DISTANCE: 12
     restart: no
     volumes:
-      - $DOCKERDIR/appdata/mc/data:/data
+      - $DOCKERDIR/appdata/mc1/data:/data
