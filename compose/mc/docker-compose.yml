@@ -79,7 +79,8 @@ services:
       SERVER_NAME: "Flying Kows"
       MOTD: "Harry's Minecraft Server"
       DIFFICULTY: "normal"
-      MEMORY: "8G"
+      INIT_MEMORY: "2G"
+      MAX_MEMORY: "8G"
       VIEW_DISTANCE: 12
     restart: no
     volumes:
