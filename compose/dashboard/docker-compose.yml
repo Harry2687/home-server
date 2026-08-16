@@ -9,6 +9,8 @@ services:
       TZ: "$TZ"
       HOMEPAGE_VAR_QBIT_USER: "$QBIT_USER"
       HOMEPAGE_VAR_QBIT_PASS: "$QBIT_PWD"
+      HOMEPAGE_VAR_JELLYFIN_API_KEY: "$JELLYFIN_API_KEY"
+      HOMEPAGE_VAR_IMMICH_API_KEY: "$IMMICH_API_KEY"
     volumes:
       - ./homepage_config:/app/config # Make sure your local config directory exists
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
