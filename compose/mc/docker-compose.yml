@@ -62,6 +62,19 @@ services:
         ferrite-core
         modernfix-mvus
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+      ENABLE_WHITELIST: "true"
+      ENFORCE_WHITELIST: "true"
+      OVERRIDE_WHITELIST: "true"
+      WHITELIST: |
+        Harry2687
+        pooeymcblooey
+        M2K001
+        BriocheBurger
+        AnirudhReddy
+        Iceman3557
+        shadow_dragon_x
+        BreadStain
+        Aditya853
       ICON: "/data/ai_flying_cow.jpeg"
       OVERRIDE_ICON: "TRUE"
       SEED: "flyingkows"
