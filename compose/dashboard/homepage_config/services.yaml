@@ -98,11 +98,12 @@
 - Misc:
     - Game Servers:
         - Minecraft:
+            icon: minecraft.svg
             server: my-docker
-            container: mc
+            container: mc1
             widget:
-            type: minecraft
-            url: udp://100.124.170.127:25565
+              type: minecraft
+              url: tcp://mc1.harrys-lab.com:25565
         - Terraria:
             server: my-docker
             container: tmodloader
