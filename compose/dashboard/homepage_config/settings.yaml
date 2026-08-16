@@ -3,3 +3,21 @@
 # https://gethomepage.dev/configs/settings
 
 title: Optiplex Media Server
+theme: dark
+color: zinc
+headerStyle: clean
+target: _blank
+
+layout:
+  Media Management:
+    style: row
+    columns: 4
+  Networking:
+    style: row
+    columns: 3
+  Storage & System:
+    style: row
+    columns: 3
+  Game Servers:
+    style: row
+    columns: 2

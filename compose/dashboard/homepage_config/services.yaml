@@ -3,11 +3,6 @@
 # https://gethomepage.dev/configs/services
 
 - Media Management:
-    - Profilarr:
-        href: https://profilarr.homeserver.harryzhong.com
-        icon: profilarr.svg
-        server: my-docker
-        container: profilarr
     - User Interface:
         - Jellyfin:
             href: https://jellyfin.homeserver.harryzhong.com
@@ -24,6 +19,11 @@
             icon: seerr.svg
             server: my-docker
             container: seerr
+        - Profilarr:
+            href: https://profilarr.homeserver.harryzhong.com
+            icon: profilarr.svg
+            server: my-docker
+            container: profilarr
     - High Definition (1080p):
         - Radarr:
             href: https://radarr.homeserver.harryzhong.com
@@ -107,27 +107,7 @@
         icon: crowdsec.svg
         server: my-docker
         container: crowdsec
-- Misc:
-    - Game Servers:
-        - Minecraft:
-            icon: minecraft.svg
-            server: my-docker
-            container: mc1
-            widget:
-              type: minecraft
-              url: tcp://mc1.harrys-lab.com:25565
-        - Terraria:
-            server: my-docker
-            container: tmodloader
-    - Hardware Monitoring:
-        - Scrutiny:
-            href: https://scrutiny.homeserver.harryzhong.com
-            icon: scrutiny.svg
-            server: my-docker
-            container: scrutiny
-            widget:
-              type: scrutiny
-              url: http://scrutiny:8080
+- Storage & System:
     - Immich:
         href: https://photos.homeserver.harryzhong.com
         icon: immich.svg
@@ -138,6 +118,14 @@
           url: http://immich_server:2283
           key: "{{HOMEPAGE_VAR_IMMICH_API_KEY}}"
           version: 2
+    - Scrutiny:
+        href: https://scrutiny.homeserver.harryzhong.com
+        icon: scrutiny.svg
+        server: my-docker
+        container: scrutiny
+        widget:
+          type: scrutiny
+          url: http://scrutiny:8080
     - Uptime Kuma:
         href: https://uptime.homeserver.harryzhong.com
         icon: uptime-kuma.svg
@@ -147,3 +135,16 @@
           type: uptimekuma
           url: http://uptime_kuma:3001
           slug: default
+
+- Game Servers:
+    - Minecraft:
+        icon: minecraft.svg
+        server: my-docker
+        container: mc1
+        widget:
+          type: minecraft
+          url: tcp://mc1.harrys-lab.com:25565
+    - Terraria:
+        icon: terraria.png
+        server: my-docker
+        container: tmodloader
