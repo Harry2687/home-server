@@ -53,7 +53,7 @@ services:
       EULA: "TRUE"
       TZ: $TZ
       TYPE: "FABRIC"
-      VERSION: "1.21.9"
+      VERSION: "1.21.11"
       USE_AIKAR_FLAGS: "true"
       MODRINTH_PROJECTS: |
         lithium
