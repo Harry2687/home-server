@@ -15,7 +15,7 @@ services:
       HOMEPAGE_VAR_IMMICH_API_KEY: "$IMMICH_API_KEY"
     volumes:
       - ./homepage_config:/app/config # Make sure your local config directory exists
-      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
+      - /var/run/docker.sock:/var/run/docker.sock:ro # (optional) For docker integrations
       - /media/storage:/media/storage:ro
     restart: unless-stopped
   uptime_kuma:
@@ -28,7 +28,7 @@ services:
       TZ: "$TZ"
     volumes:
       - $DOCKERDIR/appdata/uptime_kuma:/app/data
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 #    ports:
 #      - 3004:3001
 
