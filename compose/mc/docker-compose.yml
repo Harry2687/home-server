@@ -50,6 +50,8 @@ services:
       - lazymc.server.address=mc1:25565
       - lazymc.port=25565
       - lazymc.server.directory=/server/mc1
+      - lazymc.public.version=1.21.11
+      - lazymc.public.protocol=774
     environment:
       EULA: "TRUE"
       TZ: $TZ
