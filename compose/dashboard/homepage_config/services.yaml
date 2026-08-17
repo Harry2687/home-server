@@ -137,13 +137,20 @@
           slug: default
 
 - Game Servers:
-    - Minecraft:
+    - Minecraft 1:
         icon: minecraft.svg
         server: my-docker
         container: mc1
         widget:
           type: minecraft
           url: tcp://mc1.harrys-lab.com:25565
+    - Minecraft 2:
+        icon: minecraft.svg
+        server: my-docker
+        container: mc2
+        widget:
+          type: minecraft
+          url: tcp://mc2.harrys-lab.com:25565
     - Terraria:
         icon: terraria.png
         server: my-docker

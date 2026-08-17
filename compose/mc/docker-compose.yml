@@ -18,6 +18,7 @@ services:
     environment:
       MAPPING: |
         mc1.harrys-lab.com=lazymc:25565
+        mc2.harrys-lab.com=lazymc:25566
     ports:
       - "25565:25565"
     restart: unless-stopped
@@ -34,6 +35,7 @@ services:
       RUST_LOG: "trace"
     volumes:
       - $DOCKERDIR/appdata/mc1/data:/server/mc1:ro
+      - $DOCKERDIR/appdata/mc2/data:/server/mc2:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   mc1:
@@ -80,11 +82,60 @@ services:
       OVERRIDE_ICON: "TRUE"
       SEED: "flyingkows"
       SERVER_NAME: "Flying Kows"
-      MOTD: "Harry's Minecraft Server"
+      MOTD: "Harry's Minecraft Server (1.21.11)"
       DIFFICULTY: "normal"
       INIT_MEMORY: "2G"
-      MAX_MEMORY: "8G"
+      MAX_MEMORY: "4G"
       VIEW_DISTANCE: 12
     restart: no
     volumes:
       - $DOCKERDIR/appdata/mc1/data:/data
+
+  mc2:
+    container_name: mc2
+    image: itzg/minecraft-server:2026.8.0
+    networks:
+      minecraft-network:
+        ipv4_address: 172.19.0.5
+    tty: true
+    stdin_open: true
+    labels:
+      - lazymc.enabled=true
+      - lazymc.group=mc2
+      - lazymc.server.address=mc2:25565
+      - lazymc.port=25566
+      - lazymc.server.directory=/server/mc2
+      - lazymc.public.version=26.2
+      - lazymc.public.protocol=776
+    environment:
+      EULA: "TRUE"
+      TZ: $TZ
+      TYPE: "FABRIC"
+      VERSION: "26.2"
+      USE_AIKAR_FLAGS: "true"
+      MODRINTH_PROJECTS: |
+        lithium
+        ferrite-core
+        modernfix-mvus
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+      ENABLE_WHITELIST: "true"
+      ENFORCE_WHITELIST: "true"
+      OVERRIDE_WHITELIST: "true"
+      WHITELIST: |
+        Harry2687
+        pooeymcblooey
+        M2K001
+        BriocheBurger
+        AnirudhReddy
+        Iceman3557
+        shadow_dragon_x
+        BreadStain
+        Aditya853
+      MOTD: "Harry's Minecraft Server (26.2)"
+      DIFFICULTY: "normal"
+      INIT_MEMORY: "2G"
+      MAX_MEMORY: "6G"
+      VIEW_DISTANCE: 12
+    restart: no
+    volumes:
+      - $DOCKERDIR/appdata/mc2/data:/data
