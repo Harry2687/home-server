@@ -1,10 +1,10 @@
 networks:
   minecraft-network:
     name: minecraft-network
-    driver: bridge    
+    driver: bridge
     ipam:
       config:
-        - subnet: 172.19.0.0/16
+        - subnet: 10.25.0.0/24
 
 services:
   router:
@@ -12,7 +12,7 @@ services:
     image: ghcr.io/itzg/mc-router:1.46.2
     networks:
       minecraft-network:
-        ipv4_address: 172.19.0.2
+        ipv4_address: 10.25.0.2
     depends_on:
       - lazymc
     environment:
@@ -28,7 +28,7 @@ services:
     image: ghcr.io/joesturge/lazymc-docker-proxy:v2.7.5
     networks:
       minecraft-network:
-        ipv4_address: 172.19.0.3
+        ipv4_address: 10.25.0.3
     restart: unless-stopped
     environment:
       TZ: $TZ
@@ -43,7 +43,7 @@ services:
     image: itzg/minecraft-server:2026.8.0
     networks:
       minecraft-network:
-        ipv4_address: 172.19.0.4
+        ipv4_address: 10.25.0.4
     tty: true
     stdin_open: true
     labels:
@@ -96,7 +96,7 @@ services:
     image: itzg/minecraft-server:2026.8.0
     networks:
       minecraft-network:
-        ipv4_address: 172.19.0.5
+        ipv4_address: 10.25.0.5
     tty: true
     stdin_open: true
     labels:
