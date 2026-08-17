@@ -7,3 +7,13 @@ include:
   - path: "compose/immich/docker-compose.yml"
   - path: "compose/hdd_monitoring/docker-compose.yml"
   - path: "compose/p2p/docker-compose.yml"
+
+networks:
+  proxy-network:
+    name: proxy-network
+  media-network:
+    name: media-network
+  immich-network:
+    name: immich-network
+  security-network:
+    name: security-network

@@ -2,6 +2,8 @@ services:
   homepage:
     image: ghcr.io/gethomepage/homepage:v1.13.2
     container_name: homepage
+    networks:
+      - proxy-network
 #    ports:
 #      - 3000:3000
     environment:
@@ -20,6 +22,8 @@ services:
     image: ghcr.io/louislam/uptime-kuma:2.5.0
     container_name: uptime_kuma
     restart: unless-stopped
+    networks:
+      - proxy-network
     environment:
       TZ: "$TZ"
     volumes:
@@ -27,3 +31,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 #    ports:
 #      - 3004:3001
+
+networks:
+  proxy-network:
+    name: proxy-network

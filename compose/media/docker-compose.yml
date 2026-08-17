@@ -2,6 +2,9 @@ services:
   jellyfin:
     image: ghcr.io/jellyfin/jellyfin:10.11.11
     container_name: jellyfin
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - TZ=$TZ
     volumes:
@@ -33,6 +36,9 @@ services:
     image: ghcr.io/seerr-team/seerr:v3.4.1
     init: true
     container_name: seerr
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - LOG_LEVEL=debug
       - TZ=$TZ
@@ -51,6 +57,9 @@ services:
   prowlarr:
     image: ghcr.io/linuxserver/prowlarr:2.5.2.5491-ls155
     container_name: prowlarr
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -63,6 +72,9 @@ services:
   radarr:
     image: ghcr.io/linuxserver/radarr:6.3.0.10514-ls313
     container_name: radarr
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -76,6 +88,9 @@ services:
   radarr_4k:
     image: ghcr.io/linuxserver/radarr:6.3.0.10514-ls313
     container_name: radarr_4k
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -89,6 +104,9 @@ services:
   radarr_anime:
     image: ghcr.io/linuxserver/radarr:6.3.0.10514-ls313
     container_name: radarr_anime
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -102,6 +120,9 @@ services:
   sonarr:
     image: ghcr.io/linuxserver/sonarr:4.0.19.2979-ls320
     container_name: sonarr
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -115,6 +136,9 @@ services:
   sonarr_4k:
     image: ghcr.io/linuxserver/sonarr:4.0.19.2979-ls320
     container_name: sonarr_4k
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -128,6 +152,9 @@ services:
   sonarr_anime:
     image: ghcr.io/linuxserver/sonarr:4.0.19.2979-ls320
     container_name: sonarr_anime
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -141,6 +168,9 @@ services:
   bazarr:
     image: ghcr.io/linuxserver/bazarr:v1.6.0-ls356
     container_name: bazarr
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -154,6 +184,9 @@ services:
   bazarr_4k:
     image: ghcr.io/linuxserver/bazarr:v1.6.0-ls356
     container_name: bazarr_4k
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -167,6 +200,9 @@ services:
   bazarr_anime:
     image: ghcr.io/linuxserver/bazarr:v1.6.0-ls356
     container_name: bazarr_anime
+    networks:
+      - media-network
+      - proxy-network
     environment:
       - PUID=$PUID
       - PGID=$PGID
@@ -180,6 +216,9 @@ services:
   profilarr:
     image: ghcr.io/dictionarry-hub/profilarr:2.1.0
     container_name: profilarr
+    networks:
+      - media-network
+      - proxy-network
 #    ports:
 #      - 6868:6868
     volumes:
@@ -192,6 +231,8 @@ services:
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:v3.5.0
     container_name: flaresolverr
+    networks:
+      - media-network
     environment:
       - LOG_LEVEL=${LOG_LEVEL:-info}
       - LOG_HTML=${LOG_HTML:-false}
@@ -200,3 +241,9 @@ services:
     ports:
       - "${PORT:-8191}:8191"
     restart: unless-stopped
+
+networks:
+  media-network:
+    name: media-network
+  proxy-network:
+    name: proxy-network

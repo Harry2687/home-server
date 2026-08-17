@@ -21,6 +21,9 @@ services:
   gluetun:
     image: ghcr.io/qdm12/gluetun:v3.41.3
     container_name: gluetun
+    networks:
+      - proxy-network
+      - media-network
     cap_add:
       - NET_ADMIN
     devices:
@@ -43,6 +46,8 @@ services:
   cleanup_downloads:
     image: ghcr.io/astral-sh/uv:python3.12-alpine
     container_name: cleanup_downloads
+    networks:
+      - media-network
     volumes:
       - $DOCKERDIR/scripts/cleanup_downloads.py:/app/cleanup_downloads.py:ro
       - $MEDIADIR:/data
@@ -59,10 +64,12 @@ services:
     restart: unless-stopped
     depends_on:
       qbittorrent:
-        condition: service_started
+         condition: service_started
   jellyfin_throttle:
     image: ghcr.io/astral-sh/uv:python3.12-alpine
     container_name: jellyfin_throttle
+    networks:
+      - media-network
     volumes:
       - $DOCKERDIR/scripts/jellyfin_throttle.py:/app/jellyfin_throttle.py:ro
     environment:
@@ -81,3 +88,9 @@ services:
         condition: service_started
       jellyfin:
         condition: service_started
+
+networks:
+  proxy-network:
+    name: proxy-network
+  media-network:
+    name: media-network

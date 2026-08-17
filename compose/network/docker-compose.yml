@@ -21,6 +21,9 @@ services:
     image: ghcr.io/serfriz/caddy-cloudflare-crowdsec:2.11.4
     container_name: caddy
     restart: unless-stopped
+    networks:
+      - proxy-network
+      - security-network
     ports:
       - "80:80"
       - "443:443"
@@ -38,6 +41,8 @@ services:
   crowdsec:
     image: crowdsecurity/crowdsec:v1.7.8
     container_name: crowdsec
+    networks:
+      - security-network
     environment:
       - GID=1000
       - COLLECTIONS=crowdsecurity/caddy crowdsecurity/base-http-scenarios
@@ -55,6 +60,9 @@ services:
     container_name: crowdsec_web_ui
     # ports:
     #   - "3000:3000"
+    networks:
+      - proxy-network
+      - security-network
     environment:
       - CROWDSEC_URL=http://crowdsec:8080
       - CROWDSEC_USER=crowdsec-web-ui
@@ -67,6 +75,8 @@ services:
     container_name: adguardhome
     image: adguard/adguardhome:v0.107.78
     restart: unless-stopped
+    networks:
+      - proxy-network
     environment:
       - TZ=$TZ
     volumes:
@@ -90,3 +100,9 @@ services:
       - PROXIED=false
       - IP6_PROVIDER=none
       - TZ=$TZ
+
+networks:
+  proxy-network:
+    name: proxy-network
+  security-network:
+    name: security-network

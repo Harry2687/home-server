@@ -3,6 +3,8 @@ services:
     restart: unless-stopped
     container_name: scrutiny
     image: ghcr.io/analogj/scrutiny:v0.9.3-omnibus
+    networks:
+      - proxy-network
     cap_add:
       - SYS_RAWIO
     environment:
@@ -20,3 +22,7 @@ services:
       - "/dev/sdc"
       - "/dev/sdd"
       - "/dev/sde"
+
+networks:
+  proxy-network:
+    name: proxy-network
