@@ -7,7 +7,7 @@ services:
 #    ports:
 #      - 3000:3000
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: "homeserver.harryzhong.com"
+      HOMEPAGE_ALLOWED_HOSTS: "home.harrys-lab.com"
       TZ: "$TZ"
       HOMEPAGE_VAR_QBIT_USER: "$QBIT_USER"
       HOMEPAGE_VAR_QBIT_PASS: "$QBIT_PWD"

@@ -5,7 +5,7 @@
 - Media Management:
     - User Interface:
         - Jellyfin:
-            href: https://jellyfin.homeserver.harryzhong.com
+            href: https://jellyfin.harrys-lab.com
             icon: jellyfin.svg
             server: my-docker
             container: jellyfin
@@ -15,60 +15,60 @@
               key: "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}"
               enableNowPlaying: true
         - Seerr:
-            href: https://seerr.homeserver.harryzhong.com
+            href: https://seerr.home.harrys-lab.com
             icon: seerr.svg
             server: my-docker
             container: seerr
         - Profilarr:
-            href: https://profilarr.homeserver.harryzhong.com
+            href: https://profilarr.home.harrys-lab.com
             icon: profilarr.svg
             server: my-docker
             container: profilarr
     - High Definition (1080p):
         - Radarr:
-            href: https://radarr.homeserver.harryzhong.com
+            href: https://radarr.home.harrys-lab.com
             icon: radarr.svg
             server: my-docker
             container: radarr
         - Sonarr:
-            href: https://sonarr.homeserver.harryzhong.com
+            href: https://sonarr.home.harrys-lab.com
             icon: sonarr.svg
             server: my-docker
             container: sonarr
         - Bazarr:
-            href: https://bazarr.homeserver.harryzhong.com
+            href: https://bazarr.home.harrys-lab.com
             icon: bazarr.svg
             server: my-docker
             container: bazarr
     - Ultra High Definition (2160p):
         - Radarr 4k:
-            href: https://radarr4k.homeserver.harryzhong.com
+            href: https://radarr4k.home.harrys-lab.com
             icon: radarr.svg
             server: my-docker
             container: radarr_4k
         - Sonarr 4k:
-            href: https://sonarr4k.homeserver.harryzhong.com
+            href: https://sonarr4k.home.harrys-lab.com
             icon: sonarr.svg
             server: my-docker
             container: sonarr_4k
         - Bazarr 4k:
-            href: https://bazarr4k.homeserver.harryzhong.com
+            href: https://bazarr4k.home.harrys-lab.com
             icon: bazarr.svg
             server: my-docker
             container: bazarr_4k
     - Anime:
         - Radarr Anime:
-            href: https://radarranime.homeserver.harryzhong.com
+            href: https://radarranime.home.harrys-lab.com
             icon: radarr.svg
             server: my-docker
             container: radarr_anime
         - Sonarr Anime:
-            href: https://sonarranime.homeserver.harryzhong.com
+            href: https://sonarranime.home.harrys-lab.com
             icon: sonarr.svg
             server: my-docker
             container: sonarr_anime
         - Bazarr Anime:
-            href: https://bazarranime.homeserver.harryzhong.com
+            href: https://bazarranime.home.harrys-lab.com
             icon: bazarr.svg
             server: my-docker
             container: bazarr_anime
@@ -82,7 +82,7 @@
           type: gluetun
           url: http://gluetun:8000
     - qBittorrent:
-        href: https://qbittorrent.homeserver.harryzhong.com
+        href: https://qbittorrent.home.harrys-lab.com
         icon: qbittorrent.svg
         server: my-docker
         container: qbittorrent
@@ -93,23 +93,23 @@
             password: "{{HOMEPAGE_VAR_QBIT_PASS}}"
             fields: ["leech", "seed", "download", "upload"]
     - Prowlarr:
-        href: https://prowlarr.homeserver.harryzhong.com
+        href: https://prowlarr.home.harrys-lab.com
         icon: prowlarr.svg
         server: my-docker
         container: prowlarr
     - AdGuard Home:
-        href: https://adguard.homeserver.harryzhong.com
+        href: https://adguard.home.harrys-lab.com
         icon: adguard-home.svg
         server: my-docker
         container: adguardhome
     - Crowdsec Web UI:
-        href: https://crowdsec.homeserver.harryzhong.com
+        href: https://crowdsec.home.harrys-lab.com
         icon: crowdsec.svg
         server: my-docker
         container: crowdsec
 - Storage & System:
     - Immich:
-        href: https://photos.homeserver.harryzhong.com
+        href: https://immich.harrys-lab.com
         icon: immich.svg
         server: my-docker
         container: immich_server
@@ -119,7 +119,7 @@
           key: "{{HOMEPAGE_VAR_IMMICH_API_KEY}}"
           version: 2
     - Scrutiny:
-        href: https://scrutiny.homeserver.harryzhong.com
+        href: https://scrutiny.home.harrys-lab.com
         icon: scrutiny.svg
         server: my-docker
         container: scrutiny
@@ -127,7 +127,7 @@
           type: scrutiny
           url: http://scrutiny:8080
     - Uptime Kuma:
-        href: https://uptime.homeserver.harryzhong.com
+        href: https://uptime.home.harrys-lab.com
         icon: uptime-kuma.svg
         server: my-docker
         container: uptime_kuma
