@@ -24,13 +24,15 @@ services:
     networks:
       - proxy-network
       - security-network
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
     ports:
       - "80:80"
       - "443:443"
       - "443:443/udp"
     environment:
-      - CLOUDFLARE_API_TOKEN_INTERNAL=$CLOUDFLARE_API_TOKEN_INTERNAL
-      - CLOUDFLARE_API_TOKEN_PUBLIC=$CLOUDFLARE_API_TOKEN_PUBLIC
+      - CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN
       - CROWDSEC_API_KEY=$CROWDSEC_API_KEY
       - TZ=$TZ
     volumes:
@@ -95,7 +97,7 @@ services:
     cap_drop: [all]
     security_opt: [no-new-privileges:true]
     environment:
-      - CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN_PUBLIC
+      - CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN
       - DOMAINS=harrys-lab.com,*.harrys-lab.com
       - PROXIED=false
       - IP6_PROVIDER=none
