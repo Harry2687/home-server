@@ -118,6 +118,8 @@ services:
         ferrite-core
         modernfix-mvus
         individual-keep-inventory-refabricated
+        fabric-language-kotlin
+        bar
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       ENABLE_WHITELIST: "true"
       ENFORCE_WHITELIST: "true"
@@ -140,3 +142,4 @@ services:
     restart: no
     volumes:
       - $DOCKERDIR/appdata/mc2/data:/data
+      - $DOCKERDIR/compose/mc/config/mc2/bar.conf:/data/config/bar.conf
