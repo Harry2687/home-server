@@ -117,6 +117,7 @@ services:
         lithium
         ferrite-core
         modernfix-mvus
+        individual-keep-inventory-refabricated
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       ENABLE_WHITELIST: "true"
       ENFORCE_WHITELIST: "true"
