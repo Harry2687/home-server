@@ -40,7 +40,7 @@ services:
 
   mc1:
     container_name: mc1
-    image: itzg/minecraft-server:2026.8.0
+    image: itzg/minecraft-server:2026.8.1
     networks:
       minecraft-network:
         ipv4_address: 10.25.0.4
@@ -93,7 +93,7 @@ services:
 
   mc2:
     container_name: mc2
-    image: itzg/minecraft-server:2026.8.0
+    image: itzg/minecraft-server:2026.8.1
     networks:
       minecraft-network:
         ipv4_address: 10.25.0.5
