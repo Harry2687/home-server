@@ -214,7 +214,7 @@ services:
 #      - 6769:6767
     restart: unless-stopped
   profilarr:
-    image: ghcr.io/dictionarry-hub/profilarr:2.1.0
+    image: ghcr.io/dictionarry-hub/profilarr:2.2.0
     container_name: profilarr
     networks:
       - media-network
