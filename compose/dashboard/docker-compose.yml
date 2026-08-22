@@ -19,7 +19,7 @@ services:
       - /media/storage:/media/storage:ro
     restart: unless-stopped
   uptime_kuma:
-    image: ghcr.io/louislam/uptime-kuma:2.5.0
+    image: ghcr.io/louislam/uptime-kuma:2.5.3
     container_name: uptime_kuma
     restart: unless-stopped
     networks:
