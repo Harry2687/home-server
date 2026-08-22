@@ -9,7 +9,7 @@ networks:
 services:
   router:
     container_name: mc-router
-    image: ghcr.io/itzg/mc-router:1.46.3
+    image: ghcr.io/itzg/mc-router:1.46.4
     networks:
       minecraft-network:
         ipv4_address: 10.25.0.2
