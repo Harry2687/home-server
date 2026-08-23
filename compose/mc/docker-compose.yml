@@ -15,10 +15,11 @@ services:
         ipv4_address: 10.25.0.2
     depends_on:
       - lazymc
+      - mc2
     environment:
       MAPPING: |
         mc1.harrys-lab.com=lazymc:25565
-        mc2.harrys-lab.com=lazymc:25566
+        mc2.harrys-lab.com=mc2:25565
     ports:
       - "25565:25565"
     restart: unless-stopped
@@ -35,7 +36,6 @@ services:
       RUST_LOG: "trace"
     volumes:
       - $DOCKERDIR/appdata/mc1/data:/server/mc1:ro
-      - $DOCKERDIR/appdata/mc2/data:/server/mc2:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   mc1:
@@ -99,14 +99,6 @@ services:
         ipv4_address: 10.25.0.5
     tty: true
     stdin_open: true
-    labels:
-      - lazymc.enabled=true
-      - lazymc.group=mc2
-      - lazymc.server.address=mc2:25565
-      - lazymc.port=25566
-      - lazymc.server.directory=/server/mc2
-      - lazymc.public.version=26.2
-      - lazymc.public.protocol=776
     environment:
       EULA: "TRUE"
       TZ: $TZ
@@ -139,7 +131,7 @@ services:
       INIT_MEMORY: "2G"
       MAX_MEMORY: "6G"
       VIEW_DISTANCE: 12
-    restart: no
+    restart: unless-stopped
     volumes:
       - $DOCKERDIR/appdata/mc2/data:/data
       - $DOCKERDIR/compose/mc/config/mc2/bar.conf:/data/config/bar.conf
