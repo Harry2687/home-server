@@ -13,8 +13,6 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
     network_mode: service:gluetun
-    labels:
-      - "com.centurylinklabs.watchtower.depends-on=gluetun"
     depends_on:
       gluetun:
         condition: service_started
