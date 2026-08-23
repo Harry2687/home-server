@@ -12,8 +12,10 @@ services:
       - $DOCKERDIR/appdata/jellyfin/cache:/cache
       - $MEDIADIR/TV:/media/tv:ro
       - $MEDIADIR/TV_4k:/media/tv_4k:ro
+      - $MEDIADIR/TV_Anime:/media/tv_anime:ro
       - $MEDIADIR/Movies:/media/movies:ro
       - $MEDIADIR/Movies_4k:/media/movies_4k:ro
+      - $MEDIADIR/Movies_Anime:/media/movies_anime:ro
       - $MEDIADIR/Boovies:/media/boovies:ro
     ports:
       - 8096:8096
