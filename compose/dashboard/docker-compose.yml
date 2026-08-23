@@ -4,8 +4,6 @@ services:
     container_name: homepage
     networks:
       - proxy-network
-#    ports:
-#      - 3000:3000
     environment:
       HOMEPAGE_ALLOWED_HOSTS: "home.harrys-lab.com"
       TZ: "$TZ"
@@ -29,8 +27,6 @@ services:
     volumes:
       - $DOCKERDIR/appdata/uptime_kuma:/app/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
-#    ports:
-#      - 3004:3001
 
 networks:
   proxy-network:

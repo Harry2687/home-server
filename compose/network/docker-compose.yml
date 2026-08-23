@@ -60,8 +60,6 @@ services:
   crowdsec_web_ui:
     image: ghcr.io/theduffman85/crowdsec-web-ui:2026.8.1
     container_name: crowdsec_web_ui
-    # ports:
-    #   - "3000:3000"
     networks:
       - proxy-network
       - security-network
@@ -87,7 +85,6 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-#      - 82:80/tcp
   cloudflare_ddns:
     image: favonia/cloudflare-ddns:1.17.0
     container_name: cloudflare_ddns
