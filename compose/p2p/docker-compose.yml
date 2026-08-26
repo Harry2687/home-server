@@ -37,28 +37,7 @@ services:
       - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":{{PORTS}}}" http://127.0.0.1:8080/api/v2/app/setPreferences 2>&1'
       - HEALTH_SUCCESS_WAIT_DURATION=99999h
     restart: unless-stopped
-  cleanup_downloads:
-    image: ghcr.io/astral-sh/uv:python3.12-alpine
-    container_name: cleanup_downloads
-    networks:
-      - media-network
-    volumes:
-      - $DOCKERDIR/scripts/cleanup_downloads.py:/app/cleanup_downloads.py:ro
-      - $MEDIADIR:/data
-    environment:
-      - MEDIADIR=/data
-      - QBIT_USER=$QBIT_USER
-      - QBIT_PWD=$QBIT_PWD
-      - QBIT_HOST=http://gluetun:8080
-      - TZ=$TZ
-      - CRON_SCHEDULE=0 3 * * *
-      - PYTHONUNBUFFERED=1
-    working_dir: /app
-    command: uv run cleanup_downloads.py
-    restart: unless-stopped
-    depends_on:
-      qbittorrent:
-         condition: service_started
+
   jellyfin_throttle:
     image: ghcr.io/astral-sh/uv:python3.12-alpine
     container_name: jellyfin_throttle
