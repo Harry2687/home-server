@@ -25,6 +25,12 @@
 	crowdsec
 }
 
+# Private IP restriction snippet
+(private_only) {
+	@blocked not remote_ip 192.168.1.0/24 100.64.0.0/10 fd7a:115c:a1e0::/48 127.0.0.1 ::1 172.16.0.0/12 10.0.0.0/8
+	respond @blocked "Forbidden" 403
+}
+
 # Public Services
 jellyfin.harrys-lab.com {
 	log
@@ -55,6 +61,7 @@ immich.harrys-lab.com {
 # Internal Services (*.home.harrys-lab.com) with Wildcard TLS
 *.home.harrys-lab.com, home.harrys-lab.com {
 	import common_headers
+	import private_only
 	tls {
 		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 		resolvers 1.1.1.1 8.8.8.8
