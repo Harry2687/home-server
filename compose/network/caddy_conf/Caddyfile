@@ -58,6 +58,19 @@ immich.harrys-lab.com {
 	reverse_proxy immich_server:2283
 }
 
+droid-server.harrys-lab.com {
+	log
+	import common_headers
+	import crowdsec
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		resolvers 1.1.1.1 8.8.8.8
+		propagation_delay 15s
+		propagation_timeout -1
+	}
+	reverse_proxy {env.DROID_SERVER_IP}:8000
+}
+
 # Internal Services (*.home.harrys-lab.com) with Wildcard TLS
 *.home.harrys-lab.com, home.harrys-lab.com {
 	import common_headers

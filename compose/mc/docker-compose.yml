@@ -20,6 +20,7 @@ services:
       MAPPING: |
         mc1.harrys-lab.com=lazymc:25565
         mc2.harrys-lab.com=mc2:25565
+        android-mc.harrys-lab.com=${DROID_SERVER_IP}:25565
     ports:
       - "25565:25565"
     restart: unless-stopped

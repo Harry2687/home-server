@@ -34,6 +34,7 @@ services:
     environment:
       - CLOUDFLARE_API_TOKEN=$CLOUDFLARE_API_TOKEN
       - CROWDSEC_API_KEY=$CROWDSEC_API_KEY
+      - DROID_SERVER_IP=$DROID_SERVER_IP
       - TZ=$TZ
     volumes:
       - ./caddy_conf:/etc/caddy
