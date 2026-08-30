@@ -107,6 +107,11 @@
         icon: crowdsec.svg
         server: my-docker
         container: crowdsec
+    - Bitmagnet:
+        href: https://bitmagnet.home.harrys-lab.com
+        icon: bitmagnet.svg
+        server: my-docker
+        container: bitmagnet-gluetun
 - Storage & System:
     - Immich:
         href: https://immich.harrys-lab.com

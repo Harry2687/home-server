@@ -62,8 +62,89 @@ services:
       jellyfin:
         condition: service_started
 
+  bitmagnet:
+    image: ghcr.io/bitmagnet-io/bitmagnet:v0.10.1
+    container_name: bitmagnet
+    restart: unless-stopped
+    network_mode: service:bitmagnet-gluetun
+    environment:
+      - LOG_FILE_ROTATOR_ENABLED=true
+      - POSTGRES_HOST=10.26.0.11
+      - POSTGRES_PASSWORD=$BITMAGNET_DB_PASSWORD
+      - POSTGRES_DB=bitmagnet
+      - POSTGRES_USER=bitmagnet
+      - TMDB_API_KEY=$TMDB_API_KEY
+      - TZ=$TZ
+    volumes:
+      - $DOCKERDIR/appdata/bitmagnet/config:/root/.config/bitmagnet
+      - $DOCKERDIR/appdata/bitmagnet/data:/root/.local/share/bitmagnet
+    depends_on:
+      bitmagnet-gluetun:
+        condition: service_started
+      bitmagnet-postgres:
+        condition: service_healthy
+    command:
+      - worker
+      - run
+      - --all
+
+  bitmagnet-gluetun:
+    image: ghcr.io/qdm12/gluetun:v3.41.3
+    container_name: bitmagnet-gluetun
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    networks:
+      proxy-network:
+      media-network:
+      bitmagnet-network:
+        ipv4_address: 10.26.0.10
+    environment:
+      - TZ=$TZ
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - OPENVPN_USER=$OPENVPN_USER
+      - OPENVPN_PASSWORD=$OPENVPN_PASSWORD
+      - SERVER_COUNTRIES=$SERVER_COUNTRIES
+      - PORT_FORWARD_ONLY=on
+      - VPN_PORT_FORWARDING=on
+      - VPN_PORT_FORWARDING_LISTENING_PORTS=3334
+      - HEALTH_SUCCESS_WAIT_DURATION=99999h
+
+  bitmagnet-postgres:
+    image: postgres:16.15-alpine
+    container_name: bitmagnet-postgres
+    restart: unless-stopped
+    networks:
+      bitmagnet-network:
+        ipv4_address: 10.26.0.11
+    environment:
+      - POSTGRES_PASSWORD=$BITMAGNET_DB_PASSWORD
+      - POSTGRES_DB=bitmagnet
+      - POSTGRES_USER=bitmagnet
+      - PGUSER=bitmagnet
+      - TZ=$TZ
+    volumes:
+      - $BITMAGNET_DB_DIR:/var/lib/postgresql/data
+    shm_size: 1g
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bitmagnet -d bitmagnet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
 networks:
   proxy-network:
     name: proxy-network
   media-network:
     name: media-network
+  bitmagnet-network:
+    name: bitmagnet-network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.26.0.0/24
+          gateway: 10.26.0.1

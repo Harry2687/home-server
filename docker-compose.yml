@@ -17,3 +17,5 @@ networks:
     name: immich-network
   security-network:
     name: security-network
+  bitmagnet-network:
+    name: bitmagnet-network

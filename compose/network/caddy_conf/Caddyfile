@@ -181,4 +181,9 @@ droid-server.harrys-lab.com {
 	handle @crowdsec {
 		reverse_proxy crowdsec_web_ui:3000
 	}
+
+	@bitmagnet host bitmagnet.home.harrys-lab.com
+	handle @bitmagnet {
+		reverse_proxy bitmagnet-gluetun:3333
+	}
 }
