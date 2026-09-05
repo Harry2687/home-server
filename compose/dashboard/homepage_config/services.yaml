@@ -81,6 +81,7 @@
         widget:
           type: gluetun
           url: http://gluetun:8000
+          version: 2
     - qBittorrent:
         href: https://qbittorrent.home.harrys-lab.com
         icon: qbittorrent.svg
