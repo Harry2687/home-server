@@ -199,7 +199,7 @@ services:
       - TZ=$TZ
       - ORIGIN=$PROFILARR_ORIGIN
   flaresolverr:
-    image: ghcr.io/flaresolverr/flaresolverr:v3.5.0
+    image: ghcr.io/flaresolverr/flaresolverr:v3.5.2
     container_name: flaresolverr
     networks:
       - media-network
