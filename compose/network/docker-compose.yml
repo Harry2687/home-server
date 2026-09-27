@@ -87,7 +87,7 @@ services:
       - 53:53/tcp
       - 53:53/udp
   cloudflare_ddns:
-    image: favonia/cloudflare-ddns:1.17.0
+    image: favonia/cloudflare-ddns:1.17.1
     container_name: cloudflare_ddns
     restart: always
     user: "1000:1000"
