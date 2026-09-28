@@ -42,7 +42,7 @@ services:
       - $DOCKERDIR/appdata/caddy/config:/config
       - $DOCKERDIR/appdata/caddy/logs:/var/log/caddy
   crowdsec:
-    image: crowdsecurity/crowdsec:v1.8.1
+    image: ghcr.io/crowdsecurity/crowdsec:v1.8.1
     container_name: crowdsec
     networks:
       - security-network
@@ -87,7 +87,7 @@ services:
       - 53:53/tcp
       - 53:53/udp
   cloudflare_ddns:
-    image: favonia/cloudflare-ddns:1.17.1
+    image: ghcr.io/favonia/cloudflare-ddns:1.17.1
     container_name: cloudflare_ddns
     restart: always
     user: "1000:1000"
