@@ -1,22 +1,4 @@
 services:
-  tailscale:
-    container_name: tailscale
-    hostname: tailscale-optiplex
-    image: ghcr.io/tailscale/tailscale:v1.102.5
-    environment:
-      - TS_STATE_DIR=/var/lib/tailscale
-      - TS_EXTRA_ARGS=--advertise-exit-node
-      - TS_USERSPACE=false
-      - TZ=$TZ
-    volumes:
-      - $DOCKERDIR/appdata/tailscale/lib:/var/lib # State data will be stored in this directory
-      - /dev/net/tun:/dev/net/tun # Required for tailscale to work
-    cap_add: # Required for tailscale to work
-      - net_admin
-      - sys_module
-    privileged: true
-    restart: always
-    network_mode: host
   caddy:
     image: ghcr.io/serfriz/caddy-cloudflare-crowdsec:2.11.4
     container_name: caddy
