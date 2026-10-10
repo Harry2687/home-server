@@ -41,7 +41,7 @@ services:
     depends_on:
       - caddy
   crowdsec_web_ui:
-    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.10.1
+    image: ghcr.io/theduffman85/crowdsec-web-ui:2026.10.3
     container_name: crowdsec_web_ui
     networks:
       - proxy-network
