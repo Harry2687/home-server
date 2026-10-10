@@ -46,6 +46,7 @@ services:
       - immich-network
     environment:
       TZ: ${TZ}
+      MACHINE_LEARNING_MODEL_REVISION: ${MACHINE_LEARNING_MODEL_REVISION:-v2}
     volumes:
       - model-cache:/cache
     env_file:
@@ -56,13 +57,13 @@ services:
 
   redis:
     container_name: immich_redis
-    image: docker.io/valkey/valkey:8-bookworm@sha256:fea8b3e67b15729d4bb70589eb03367bab9ad1ee89c876f54327fc7c6e618571
+    image: docker.io/valkey/valkey:9@sha256:c123e3715db63d06d4ad6964884037aa0d5d4d703939b9929954112889708e1d
     networks:
       - immich-network
     environment:
       TZ: ${TZ}
     healthcheck:
-      test: redis-cli ping || exit 1
+      test: redis-cli ping | grep -q PONG || exit 1
     restart: always
 
   database:
@@ -83,6 +84,8 @@ services:
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
     shm_size: 128mb
     restart: always
+    healthcheck:
+      disable: false
 
 volumes:
   model-cache:
