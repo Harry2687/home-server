@@ -186,7 +186,7 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
   profilarr:
-    image: ghcr.io/dictionarry-hub/profilarr:2.2.0
+    image: ghcr.io/dictionarry-hub/profilarr:2.3.1
     container_name: profilarr
     networks:
       - media-network
