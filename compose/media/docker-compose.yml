@@ -198,6 +198,7 @@ services:
       - PGID=$PGID
       - TZ=$TZ
       - ORIGIN=$PROFILARR_ORIGIN
+    restart: unless-stopped
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:v3.5.2
     container_name: flaresolverr
