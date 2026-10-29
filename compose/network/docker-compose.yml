@@ -24,7 +24,7 @@ services:
       - $DOCKERDIR/appdata/caddy/config:/config
       - $DOCKERDIR/appdata/caddy/logs:/var/log/caddy
   crowdsec:
-    image: ghcr.io/crowdsecurity/crowdsec:v1.8.1
+    image: ghcr.io/crowdsecurity/crowdsec:v1.8.2
     container_name: crowdsec
     networks:
       - security-network
