@@ -56,7 +56,7 @@ services:
     restart: unless-stopped
   adguardhome:
     container_name: adguardhome
-    image: adguard/adguardhome:v0.107.79
+    image: adguard/adguardhome:v0.107.80
     restart: unless-stopped
     networks:
       - proxy-network
