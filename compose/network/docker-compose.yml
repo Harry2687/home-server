@@ -1,6 +1,6 @@
 services:
   caddy:
-    image: ghcr.io/serfriz/caddy-cloudflare-crowdsec:2.11.7
+    image: ghcr.io/serfriz/caddy-cloudflare-crowdsec:2.11.9
     container_name: caddy
     restart: unless-stopped
     networks:
