@@ -11,6 +11,12 @@ include:
 networks:
   proxy-network:
     name: proxy-network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1
   media-network:
     name: media-network
   immich-network:
