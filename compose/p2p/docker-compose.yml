@@ -113,7 +113,7 @@ services:
       - HEALTH_SUCCESS_WAIT_DURATION=99999h
 
   bitmagnet-postgres:
-    image: postgres:16.15-alpine
+    image: postgres:16.16-alpine
     container_name: bitmagnet-postgres
     restart: unless-stopped
     networks:
