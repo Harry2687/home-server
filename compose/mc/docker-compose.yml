@@ -27,7 +27,7 @@ services:
 
   lazymc:
     container_name: lazymc
-    image: ghcr.io/joesturge/lazymc-docker-proxy:v2.7.5
+    image: ghcr.io/joesturge/lazymc-docker-proxy:v2.8.0
     networks:
       minecraft-network:
         ipv4_address: 10.25.0.3
