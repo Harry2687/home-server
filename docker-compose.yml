@@ -15,8 +15,8 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.21.0.0/16
-          gateway: 172.21.0.1
+        - subnet: 10.27.0.0/24
+          gateway: 10.27.0.1
   media-network:
     name: media-network
   immich-network:
