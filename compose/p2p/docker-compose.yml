@@ -74,6 +74,8 @@ services:
       - POSTGRES_DB=bitmagnet
       - POSTGRES_USER=bitmagnet
       - TMDB_API_KEY=$TMDB_API_KEY
+      - CLASSIFIER_WORKFLOW=media_only
+      - CLASSIFIER_DELETE_XXX=true
       - TZ=$TZ
     volumes:
       - $DOCKERDIR/appdata/bitmagnet/config:/root/.config/bitmagnet
@@ -87,6 +89,46 @@ services:
       - worker
       - run
       - --all
+
+  armiger-ultra:
+    image: ghcr.io/spencernorton/armiger:3.15.4
+    container_name: armiger-ultra
+    restart: unless-stopped
+    command: [python, /opt/connectors/bitmagnet/bitmagnet_connector.py]
+    networks:
+      - media-network
+    environment:
+      - TZ=$TZ
+      - ARMIGER_CONNECTOR_MODE=both
+      - ARMIGER_CONNECTOR_HOST=0.0.0.0
+      - ARMIGER_CONNECTOR_PORT=8096
+      - ARMIGER_PROXY_PORT=8097
+      - ARMIGER_ENABLE_TORZNAB_PROXY=true
+      - BITMAGNET_GRAPHQL_URL=http://bitmagnet-gluetun:3333/graphql
+      - UPSTREAM_TORZNAB_URL=http://bitmagnet-gluetun:3333/torznab
+      - BITMAGNET_POLL_SECONDS=5
+      - BITMAGNET_BATCH_SIZE=100
+      - BITMAGNET_GRAPHQL_TIMEOUT_SECONDS=30
+      - ARMIGER_VARIANT=ultra
+      - ARMIGER_USE_ZERO_CUE_CATALOG=true
+      - ARMIGER_AUTO_DOWNLOAD=false
+      - ARMIGER_UPDATE_CHANNEL=off
+      - ARMIGER_DHT_SHARE_OPT_IN=false
+      - ARMIGER_DHT_RSI_MODE=off
+      - ARMIGER_REQUIRE_ENGLISH_AUDIO=false
+      - ARMIGER_ALLOW_ENGLISH_SUBS=true
+      - ARMIGER_REJECT_DEAD_SWARMS=false
+      - ARMIGER_PRUNE_MALWARE=false
+      - ARMIGER_PRUNE_DEAD_SWARMS=false
+    depends_on:
+      bitmagnet:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8096/healthz', timeout=3)"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
 
   bitmagnet-gluetun:
     image: ghcr.io/qdm12/gluetun:v3.41.3
