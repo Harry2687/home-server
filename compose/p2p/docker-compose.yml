@@ -76,6 +76,8 @@ services:
       - TMDB_API_KEY=$TMDB_API_KEY
       - CLASSIFIER_WORKFLOW=media_only
       - CLASSIFIER_DELETE_XXX=true
+      - CLASSIFIER_CONCURRENCY=25
+      - DHT_CRAWLER_SCALING_FACTOR=5
       - TZ=$TZ
     volumes:
       - $DOCKERDIR/appdata/bitmagnet/config:/root/.config/bitmagnet
