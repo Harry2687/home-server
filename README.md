@@ -27,7 +27,7 @@ Ubuntu 24.04.4 LTS on bare metal. Various Docker containers for each service.
 ## Services
 
 - **Media & Downloads**: Jellyfin, Seerr, Radarr, Sonarr, Bazarr, Prowlarr, Profilarr, FlareSolverr, and qBittorrent routed through Gluetun (ProtonVPN with port forwarding).
-- **Networking & Security**: Caddy (reverse proxy with Cloudflare DNS challenge and CrowdSec bouncer), CrowdSec with Web UI, AdGuard Home (local DNS and ad-blocking), Tailscale (mesh VPN and exit node), and Cloudflare DDNS.
+- **Networking & Security**: Caddy (reverse proxy with Cloudflare DNS challenge and CrowdSec bouncer), CrowdSec with Web UI, Pocket ID (passkey OIDC provider), AdGuard Home (local DNS and ad-blocking), Tailscale (mesh VPN and exit node), and Cloudflare DDNS.
 - **Photos**: Immich (photo management with machine learning and PostgreSQL).
 - **Game Servers**: Minecraft servers managed through `mc-router` and `lazymc`.
 - **Monitoring & Management**: Homepage (dashboard), Uptime Kuma (service monitoring), and Scrutiny (hard drive S.M.A.R.T. monitoring).

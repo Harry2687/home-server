@@ -4,8 +4,10 @@ services:
     container_name: caddy
     restart: unless-stopped
     networks:
-      - proxy-network
-      - security-network
+      proxy-network:
+        aliases:
+          - auth.harrys-lab.com
+      security-network: {}
     dns:
       - 1.1.1.1
       - 8.8.8.8
@@ -82,6 +84,27 @@ services:
       - PROXIED=false
       - IP6_PROVIDER=none
       - TZ=$TZ
+  pocket-id:
+    image: ghcr.io/pocket-id/pocket-id:v2.19.3
+    container_name: pocket-id
+    restart: unless-stopped
+    networks:
+      - proxy-network
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+      - APP_URL=https://auth.harrys-lab.com
+      - ENCRYPTION_KEY=$POCKET_ID_ENCRYPTION_KEY
+      - TRUST_PROXY=true
+    volumes:
+      - $DOCKERDIR/appdata/pocket-id:/app/data
+    healthcheck:
+      test: ["CMD", "/app/pocket-id", "healthcheck"]
+      interval: 1m30s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
 
 networks:
   proxy-network:

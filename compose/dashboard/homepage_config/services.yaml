@@ -108,6 +108,11 @@
         icon: crowdsec.svg
         server: my-docker
         container: crowdsec
+    - Pocket ID:
+        href: https://auth.harrys-lab.com
+        icon: pocket-id.svg
+        server: my-docker
+        container: pocket-id
     - Bitmagnet:
         href: https://bitmagnet.home.harrys-lab.com
         icon: bitmagnet.svg
