@@ -42,7 +42,10 @@ def is_remote_ip(ip_str):
 
 def get_active_remote_streams():
     """Queries Jellyfin for active remote streams."""
-    headers = {"X-Emby-Token": JELLYFIN_API_KEY, "Accept": "application/json"}
+    headers = {
+        "Authorization": f'MediaBrowser Token="{JELLYFIN_API_KEY}"',
+        "Accept": "application/json",
+    }
     try:
         response = requests.get(f"{JELLYFIN_URL}/Sessions", headers=headers, timeout=10)
         response.raise_for_status()
