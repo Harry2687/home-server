@@ -45,6 +45,19 @@ jellyfin.harrys-lab.com {
 	reverse_proxy jellyfin:8096
 }
 
+invite.harrys-lab.com {
+	log
+	import common_headers
+	import crowdsec
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		resolvers 1.1.1.1 8.8.8.8
+		propagation_delay 15s
+		propagation_timeout -1
+	}
+	reverse_proxy wizarr:5690
+}
+
 immich.harrys-lab.com {
 	log
 	import common_headers

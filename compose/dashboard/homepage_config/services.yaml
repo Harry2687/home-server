@@ -19,6 +19,11 @@
             icon: seerr.svg
             server: my-docker
             container: seerr
+        - Wizarr:
+            href: https://invite.harrys-lab.com
+            icon: wizarr.svg
+            server: my-docker
+            container: wizarr
         - Profilarr:
             href: https://profilarr.home.harrys-lab.com
             icon: profilarr.svg
