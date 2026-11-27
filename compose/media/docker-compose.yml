@@ -61,7 +61,7 @@ services:
       - $DOCKERDIR/appdata/wizarr:/data
     restart: unless-stopped
   prowlarr:
-    image: ghcr.io/linuxserver/prowlarr:2.5.2.5491-ls155
+    image: ghcr.io/linuxserver/prowlarr:3.1.0
     container_name: prowlarr
     networks:
       - media-network
@@ -74,7 +74,7 @@ services:
       - $DOCKERDIR/appdata/prowlarr/config:/config
     restart: unless-stopped
   radarr:
-    image: ghcr.io/linuxserver/radarr:6.3.0.10514-ls313
+    image: ghcr.io/linuxserver/radarr:7.0.3
     container_name: radarr
     networks:
       - media-network
@@ -88,7 +88,7 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
   radarr_4k:
-    image: ghcr.io/linuxserver/radarr:6.3.0.10514-ls313
+    image: ghcr.io/linuxserver/radarr:7.0.3
     container_name: radarr_4k
     networks:
       - media-network
@@ -102,7 +102,7 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
   radarr_anime:
-    image: ghcr.io/linuxserver/radarr:6.3.0.10514-ls313
+    image: ghcr.io/linuxserver/radarr:7.0.3
     container_name: radarr_anime
     networks:
       - media-network
@@ -116,7 +116,7 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
   sonarr:
-    image: ghcr.io/linuxserver/sonarr:4.0.19.2979-ls320
+    image: ghcr.io/linuxserver/sonarr:4.0.20
     container_name: sonarr
     networks:
       - media-network
@@ -130,7 +130,7 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
   sonarr_4k:
-    image: ghcr.io/linuxserver/sonarr:4.0.19.2979-ls320
+    image: ghcr.io/linuxserver/sonarr:4.0.20
     container_name: sonarr_4k
     networks:
       - media-network
@@ -144,7 +144,7 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
   sonarr_anime:
-    image: ghcr.io/linuxserver/sonarr:4.0.19.2979-ls320
+    image: ghcr.io/linuxserver/sonarr:4.0.20
     container_name: sonarr_anime
     networks:
       - media-network
@@ -158,7 +158,7 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
   bazarr:
-    image: ghcr.io/linuxserver/bazarr:v1.6.0-ls356
+    image: ghcr.io/linuxserver/bazarr:1.6.2
     container_name: bazarr
     networks:
       - media-network
@@ -172,7 +172,7 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
   bazarr_4k:
-    image: ghcr.io/linuxserver/bazarr:v1.6.0-ls356
+    image: ghcr.io/linuxserver/bazarr:1.6.2
     container_name: bazarr_4k
     networks:
       - media-network
@@ -186,7 +186,7 @@ services:
       - $MEDIADIR:/data
     restart: unless-stopped
   bazarr_anime:
-    image: ghcr.io/linuxserver/bazarr:v1.6.0-ls356
+    image: ghcr.io/linuxserver/bazarr:1.6.2
     container_name: bazarr_anime
     networks:
       - media-network

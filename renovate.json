@@ -18,6 +18,12 @@
       ]
     },
     {
+      "description": "Custom regex versioning for LinuxServer Jellyfin tags (e.g. 12.4ubu2604-ls61)",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/linuxserver/jellyfin"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))?ubu\\d+-ls(?<build>\\d+)$"
+    },
+    {
       "description": "Group Immich updates together (must run matching versions)",
       "groupName": "immich-stack",
       "matchPackageNames": [
