@@ -93,7 +93,7 @@ services:
       - --all
 
   armiger-ultra:
-    image: ghcr.io/spencernorton/armiger:3.17.0
+    image: ghcr.io/spencernorton/armiger:3.18.0
     container_name: armiger-ultra
     restart: unless-stopped
     command: [python, /opt/connectors/bitmagnet/bitmagnet_connector.py]
